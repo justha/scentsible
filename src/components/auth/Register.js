@@ -79,7 +79,9 @@ export const Register = (props) => {
 
                 <br></br>
 
-                <button className="btn btn-1 btn-sep icon-send" type="submit">Create Account</button>
+                <fieldset>
+                    <button className="btn btn-1 btn-sep icon-send" type="submit">Create Account</button>
+                </fieldset>
 
             </form>
 
