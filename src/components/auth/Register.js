@@ -50,37 +50,45 @@ export const Register = (props) => {
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="first name" />
+                    <label htmlFor="firstName"></label>
+                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="last name" />
+                    <label htmlFor="lastName"></label>
+                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="userName"> Username </label>
-                    <input ref={userName} type="text" name="userName" className="form-control" placeholder="display name" />
+                    <label htmlFor="inputEmail"></label>
+                    <input ref={email} type="email" name="email" className="form-control" placeholder="Email" required />
+                </fieldset>
+
+                <br></br>
+                
+                <fieldset>
+                    <label htmlFor="userName"></label>
+                    <input ref={userName} type="text" name="userName" className="form-control" placeholder="Username" />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email Address</label>
-                    <input ref={email} type="email" name="email" className="form-control" placeholder="email address" required />
+                    <label htmlFor="inputPassword"></label>
+                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password" name="password" className="form-control" placeholder="password" required />
+                    <label htmlFor="verifyPassword"></label>
+                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify Password" required />
                 </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="re-enter password" required />
-                </fieldset>
-                <fieldset>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
-                </fieldset>
+
+                <br></br>
+
+                <button className="btn btn-1 btn-sep icon-send" type="submit">Create Account</button>
+
             </form>
+
+            <br></br>
+
             <section className="link--register">
-                <div>Already Registered?</div>
                 <Link to="/login">Login</Link>
             </section>
+
         </main>
     )
 }
