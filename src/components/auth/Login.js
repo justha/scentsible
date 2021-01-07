@@ -51,7 +51,7 @@ export const Login = (props) => {
       <div className="container--login">
         {showUser && (
           <dialog>
-            <h1 level="3">User does not exist</h1>
+            <h1>User does not exist</h1>
             <button
               label="Close"
               className="button--close"
@@ -61,7 +61,7 @@ export const Login = (props) => {
         )}
         {show && (
           <dialog>
-            <h1 level="3">Password does not match</h1>
+            <h1>Password does not match</h1>
             <button
               className="button--close"
               label="Close"
@@ -74,8 +74,8 @@ export const Login = (props) => {
 
 
       <div direction="column" alignSelf="center">
-        <h1 level="1">scentsible</h1>
-        {/* <h1 level="2">Sign In</h1> */}
+        <h1>scentsible</h1>
+        {/* <h1>Sign In</h1> */}
         
         <form className="form--login" onSubmit={handleLogin}>
           <fieldset label="Email address" htmlFor="inputEmail">
