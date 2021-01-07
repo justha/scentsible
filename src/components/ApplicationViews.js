@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { BrandProvider } from "./brand/BrandProvider"
 import { FamilyProvider } from "./family/FamilyProvider"
 import { GroupProvider } from "./group/GroupProvider"
+import { Homepage } from "./home/Homepage"
 import { RatingProvider } from "./rating/RatingProvider"
 import { ProductProvider } from "./product/ProductProvider"
 import { ProductForm } from "./product/ProductForm"
@@ -26,13 +27,17 @@ export const ApplicationViews = (props) => {
                             <GroupProvider>
                                 <RatingProvider>
 
+                                    <Route exact path="/home" 
+                                        render={(props) => <Homepage {...props} />}
+                                    />
+
                                     <Route exact path="/products" 
                                         render={(props) => <ProductList {...props} />}
                                     />
 
-                                    {/* <Route exact path="/products/create" 
+                                    <Route exact path="/products/create" 
                                         render={(props) => <ProductForm {...props} />}
-                                    /> */}
+                                    />
 
                                     {/* <Route exact path="/products/edit/:productId(\d+)" 
                                         render={(props) => <ProductForm {...props} />}

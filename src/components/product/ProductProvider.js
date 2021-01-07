@@ -3,7 +3,7 @@ import React, { useState } from "react"
 export const ProductContext = React.createContext()
 
 export const ProductProvider = (props) => {
-    const [products, setProducts] = useState([{user:{user:{first_name: ""}}, category:{label:""}}])  
+    const [products, setProducts] = useState([{user:{user:{first_name: ""}}, group:{name:""}, brand:{name:""}, family:{name:""}}])  
     const [product, setProduct] = useState({user:{user:{}}})
 
     const getProducts = () => {
