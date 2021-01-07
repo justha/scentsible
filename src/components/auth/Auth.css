@@ -1,0 +1,8 @@
+.form--login, 
+.link--register {
+    text-align: center;
+}
+
+.form--login > fieldset {
+    border: none;
+}
