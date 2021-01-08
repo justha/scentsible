@@ -36,7 +36,8 @@ export const ProductForm = (props) => {
         }
     }, [])
 
-    //Updates prodObj state variable every time the state of an input fields changes
+    //Updates prodObj state variable every time the state of an input fields changes;
+    //Note that 'name' and 'image_url' are text input fields, whereas the others are select drop-downs
     const handleControlledInputChange = (browserEvent) => {
         const newProduct = Object.assign({}, prodObj)
 
