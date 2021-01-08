@@ -7,58 +7,57 @@ import "./Product.css"
 
 
 export const ProductForm = (props) => {
-    const { addProduct, getProductById } = useContext(ProductContext)
+    const { addProduct, getProductById, updateProduct } = useContext(ProductContext)
     const { brands, getBrands } = useContext(BrandContext)
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
 
+    const [prodObj, setProdObj] = useState({})
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
-    // const [prodObj, setProdObj] = useState({}) //defines and sets state of the prodObj
     const productId = parseInt(props.match.params.productId)
 
-    //Gets on initialization so that the <select> element presents options to the user
+    //Defines and sets the state of the current working prodObj to the following default values
+    // const [prodObj, setProdObj] = useState({
+    //     name: "",
+    //     image_url: "",
+    //     group_id: 0,
+    //     brand_id: 0,
+    //     family_id: 0,
+    // })
+
+    //Gets the following on initialization, so that the <select> element presents options to the user
     useEffect(() => {
         getGroups()
         getBrands()
         getFamilies()
         
         if (editMode) {
-            getProductById(productId).then(setProdObj)}
-
+            getProductById(productId).then(setProdObj)
+        }
     }, [])
 
-    ////Defines and sets state of prodObj; Sets prodObj to the following default values
-    const [prodObj, setProdObj] = useState({
-        productName: "",
-        imageURL: "",
-        groupId: 0,
-        brandId: 0,
-        familyId: 0,
-    })
-
     //Updates prodObj state variable every time the state of an input fields changes
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChange = (browserEvent) => {
         const newProduct = Object.assign({}, prodObj)
 
-        {event.target.name === "groupId"
-        ? (newProduct[event.target.name] = event.value)
-        : (newProduct[event.target.name] = event.target.value)         
-        }
+        newProduct[browserEvent.target.name] = browserEvent.target.value 
 
-        newProduct[event.target.name] = event.target.value
+        // browserEvent.target.name === "group_id" || browserEvent.target.name === "brand_id" || browserEvent.target.name === "family_id" 
+        // ? (newProduct[browserEvent.target.name] = browserEvent.value)
+        // : (newProduct[browserEvent.target.name] = browserEvent.target.value)
 
         setProdObj(newProduct)
     }
 
     return (
         <form className="form--product">
-            <h2 className="productForm__title">{editMode ? "Edit Product" : "Add a New Product"}</h2>
+            <h2 className="productForm__title">{editMode ? "Edit Existing Product" : "Add a New Product"}</h2>
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="groupId">Product Group: </label> */}
-                    <select name="groupId" className="form-control"
-                        value={prodObj.groupId}
+                    {/* <label htmlFor="group_id">Product Group: </label> */}
+                    <select name="group_id" className="form-control"
+                        value={prodObj.group_id}
                         onChange={handleControlledInputChange}>
                         <option value="0">Product Group</option>
                             {groups.map(group => {
@@ -70,9 +69,9 @@ export const ProductForm = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="brandId">Brand: </label> */}
-                    <select name="brandId" className="form-control"
-                        value={prodObj.brandId}
+                    {/* <label htmlFor="brand_id">Brand: </label> */}
+                    <select name="brand_id" className="form-control"
+                        value={prodObj.brand_id}
                         onChange={handleControlledInputChange}>
                         <option value="0">Brand</option>
                         {
@@ -86,10 +85,10 @@ export const ProductForm = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="productName">Product Name: </label> */}
-                    <input type="text" name="productName" required autoFocus className="form-control"
+                    {/* <label htmlFor="name">Product Name: </label> */}
+                    <input type="text" name="name" className="form-control" required autoFocus 
                         placeholder="Product Name"
-                        value={prodObj.productName}
+                        defaultValue={prodObj.name}
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -97,9 +96,9 @@ export const ProductForm = (props) => {
             
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="familyId">Scent Family: </label> */}
-                    <select name="familyId" className="form-control"
-                        value={prodObj.familyId}
+                    {/* <label htmlFor="family_id">Scent Family: </label> */}
+                    <select name="family_id" className="form-control"
+                        value={prodObj.family_id}
                         onChange={handleControlledInputChange}>
                         <option value="0">Scent Family</option>
                         {
@@ -113,37 +112,65 @@ export const ProductForm = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="productName">Image URL </label> */}
-                    <input type="text" name="imageURL" required autoFocus className="form-control"
+                    {/* <label htmlFor="image_url">Image URL </label> */}
+                    <input type="text" name="image_url" className="form-control" required autoFocus 
                         placeholder="Image URL"
-                        value={prodObj.imageURL}
+                        defaultValue={prodObj.image_url}
                         onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
             
 
-            <button 
-                className="button--addProduct"
-                type="submit"
-                onClick={clickEvent => {
-                    // Prevents form from being submitted
-                    clickEvent.preventDefault()
+            {editMode 
+            ? (
+                <div>                    
+                <button 
+                    className="button--addProduct"
+                    type="submit"
+                    onClick={clickEvent => {
+                        clickEvent.preventDefault()  // Prevents form from being submitted
 
-                    const newProduct = {
-                        name: prodObj.productName,
-                        image_url: prodObj.imageURL,
-                        group_id: parseInt(prodObj.groupId),
-                        brand_id: parseInt(prodObj.brandId),
-                        family_id: parseInt(prodObj.familyId)}
+                        const revisedProduct = {
+                            id: prodObj.id,
+                            name: prodObj.name,
+                            image_url: prodObj.image_url,
+                            group_id: parseInt(prodObj.group_id),
+                            brand_id: parseInt(prodObj.brand_id),
+                            family_id: parseInt(prodObj.family_id)}
+                        
+                        updateProduct(revisedProduct)  // Sends PUT request to API
+                        .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+                    }}
+                >
+                Update
+                </button>
+            </div>
+            )
+            : (
+                <div>                    
+                    <button 
+                        className="button--addProduct"
+                        type="submit"
+                        onClick={clickEvent => {
+                            clickEvent.preventDefault()  // Prevents form from being submitted 
 
-                    
-                    addProduct(newProduct)  // Sends POST request to API
-                    .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
-                }}
-            >
-            Save
-            </button>
+                            const newProduct = {
+                                name: prodObj.name,
+                                image_url: prodObj.image_url,
+                                group_id: parseInt(prodObj.group_id),
+                                brand_id: parseInt(prodObj.brand_id),
+                                family_id: parseInt(prodObj.family_id)}
+                            
+                            addProduct(newProduct)  // Sends POST request to API
+                            .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+                        }}
+                    >
+                    Save
+                    </button>
+                </div>
+            )
+            }
                 
         </form>
     )

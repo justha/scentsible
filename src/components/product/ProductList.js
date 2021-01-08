@@ -47,7 +47,7 @@ export const ProductList = ({ props }) => {
                         </button>
     
                         <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> 
-                            Delete
+                            Delete Product
                         </button>
                     </div>
                     )
