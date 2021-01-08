@@ -1,0 +1,8 @@
+.form--product,
+.button--createProduct {
+    text-align: center;
+}
+
+.form--product > fieldset {
+    border: none;
+}
