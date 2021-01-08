@@ -40,13 +40,12 @@ export const ProductForm = (props) => {
     const handleControlledInputChange = (browserEvent) => {
         const newProduct = Object.assign({}, prodObj)
 
-        newProduct[browserEvent.target.name] = browserEvent.target.value 
-
-        // browserEvent.target.name === "group_id" || browserEvent.target.name === "brand_id" || browserEvent.target.name === "family_id" 
-        // ? (newProduct[browserEvent.target.name] = browserEvent.value)
-        // : (newProduct[browserEvent.target.name] = browserEvent.target.value)
+        browserEvent.target.name === "name" || browserEvent.target.name === "image_url"
+        ? (newProduct[browserEvent.target.name] = browserEvent.target.value)
+        : (newProduct[browserEvent.target.name] = parseInt(browserEvent.target.value))
 
         setProdObj(newProduct)
+        console.log("prodObj >>", prodObj)
     }
 
     return (
