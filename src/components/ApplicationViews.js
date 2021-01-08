@@ -39,9 +39,9 @@ export const ApplicationViews = (props) => {
                                         render={(props) => <ProductForm {...props} />}
                                     />
 
-                                    {/* <Route exact path="/products/edit/:productId(\d+)" 
+                                    <Route exact path="/products/edit/:productId(\d+)" 
                                         render={(props) => <ProductForm {...props} />}
-                                    /> */}
+                                    />
                                     
                                     {/* <Route path="/products/:productId(\d+)"
                                         render={(props) => <ProductDetail {...props} />}
