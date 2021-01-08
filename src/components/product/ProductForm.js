@@ -7,10 +7,10 @@ import "./Product.css"
 
 
 export const ProductForm = (props) => {
-    const { addProduct, getProductById} = useContext(ProductContext)
-    const { brands, getBrands} = useContext(BrandContext)
-    const { families, getFamilies} = useContext(FamilyContext)
-    const { groups, getGroups} = useContext(GroupContext)
+    const { addProduct, getProductById } = useContext(ProductContext)
+    const { brands, getBrands } = useContext(BrandContext)
+    const { families, getFamilies } = useContext(FamilyContext)
+    const { groups, getGroups } = useContext(GroupContext)
 
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     // const [prodObj, setProdObj] = useState({}) //defines and sets state of the prodObj
@@ -123,7 +123,9 @@ export const ProductForm = (props) => {
             </fieldset>
             
 
-            <button type="submit"
+            <button 
+                className="button--addProduct"
+                type="submit"
                 onClick={clickEvent => {
                     // Prevents form from being submitted
                     clickEvent.preventDefault()
@@ -133,14 +135,16 @@ export const ProductForm = (props) => {
                         image_url: prodObj.imageURL,
                         group_id: parseInt(prodObj.groupId),
                         brand_id: parseInt(prodObj.brandId),
-                        family_id: parseInt(prodObj.familyId)
-                    }
+                        family_id: parseInt(prodObj.familyId)}
 
-                    // Send POST request to API
-                    addProduct(newProduct)
-                    .then(() => {props.history.push(`/products`)})
+                    
+                    addProduct(newProduct)  // Sends POST request to API
+                    .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                 }}
-                className="button--addProduct">Save</button>
+            >
+            Save
+            </button>
+                
         </form>
     )
 }
