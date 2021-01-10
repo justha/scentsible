@@ -27,7 +27,7 @@ export const ProductreviewProvider = (props) => {
             .then(res => res.json())
     }
 
-    const getProductreviewByUser = (userId) => {
+    const getProductreviewsByUser = (userId) => {
         return fetch(`http://localhost:8000/productreviews?user_id=${userId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
@@ -38,7 +38,7 @@ export const ProductreviewProvider = (props) => {
             .then(res => res.json())
     }
 
-    const getProductByProduct = (productId) => {
+    const getProductreviewsByProduct = (productId) => {
         return fetch(`http://localhost:8000/productreviews?category_id=${productId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
@@ -46,7 +46,6 @@ export const ProductreviewProvider = (props) => {
             }
           })
             .then(res => res.json())
-            //.then(setProducts)
     }
 
     const addProductreview = productreview => {
@@ -89,7 +88,7 @@ export const ProductreviewProvider = (props) => {
     return (
         <ProductreviewContext.Provider value={{
             productreview, setProductreview, productreviews, addProductreview, getProductreviews, setProductreviews,
-            getProductreviewById, updateProductreview, getProductreviewByUser,
+            getProductreviewById, updateProductreview, getProductreviewsByUser, getProductreviewsByProduct, 
             deleteProductreview
         }}>
             {props.children}

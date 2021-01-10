@@ -37,7 +37,6 @@ export const ProductForm = (props) => {
         : (newProduct[browserEvent.target.name] = parseInt(browserEvent.target.value))
 
         setProdObj(newProduct)
-        console.log("prodObj >>", prodObj)
     }
 
     return (
@@ -155,6 +154,8 @@ export const ProductForm = (props) => {
                             
                             addProduct(newProduct)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+
+                            console.log("prodObj>>",prodObj)
                         }}
                     >
                     Save

@@ -1,17 +1,11 @@
 import React, { useContext, useEffect, useState} from "react"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
-import { BrandContext } from "../brand/BrandProvider"
-import { FamilyContext } from "../family/FamilyProvider"
-import { GroupContext } from "../group/GroupProvider"
 
 
 export const ProductList = ({ props }) => {
     
     const { products, getProducts, deleteProduct } = useContext(ProductContext)
-    const { brands, getBrands } = useContext(BrandContext)
-    const { families, getFamilies } = useContext(FamilyContext)
-    const { groups, getGroups } = useContext(GroupContext)
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
@@ -19,9 +13,6 @@ export const ProductList = ({ props }) => {
     
     useEffect(() => {
         getProducts()
-        .then(getGroups)
-        .then(getBrands)
-        .then(getFamilies)
     }, [])
     
     
@@ -58,9 +49,12 @@ export const ProductList = ({ props }) => {
 
                         <section className="container__ratings">      
                                               
-                            <div>My Rating
-                                <button className="button--rateProduct" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>
+                            <div>My Rating 
+                                <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>
                                     Rate
+                                </button>
+                                <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.id}` })}}>
+                                    Edit
                                 </button>
                             </div>
 

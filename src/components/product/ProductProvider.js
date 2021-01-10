@@ -27,7 +27,7 @@ export const ProductProvider = (props) => {
             .then(res => res.json())
     }
 
-    const getProductByUser = (userId) => {
+    const getProductsByUser = (userId) => {
         return fetch(`http://localhost:8000/products?user_id=${userId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
@@ -38,7 +38,7 @@ export const ProductProvider = (props) => {
             .then(res => res.json())
     }
 
-    const getProductByGroup = (groupId) => {
+    const getProductsByGroup = (groupId) => {
         return fetch(`http://localhost:8000/products?category_id=${groupId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
@@ -46,10 +46,9 @@ export const ProductProvider = (props) => {
             }
           })
             .then(res => res.json())
-            //.then(setProducts)
     }
 
-    const getProductByFamily = (familyId) => {
+    const getProductsByFamily = (familyId) => {
         return fetch(`http://localhost:8000/products?category_id=${familyId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
@@ -57,7 +56,6 @@ export const ProductProvider = (props) => {
             }
           })
             .then(res => res.json())
-            //.then(setProducts)
     }
 
     const addProduct = product => {
@@ -100,7 +98,7 @@ export const ProductProvider = (props) => {
     return (
         <ProductContext.Provider value={{
             product, setProduct, products, addProduct, getProducts, setProducts,
-            getProductById, updateProduct, getProductByUser, getProductByGroup, getProductByFamily, 
+            getProductById, updateProduct, getProductsByUser, getProductsByGroup, getProductsByFamily, 
             deleteProduct   
         }}>
             {props.children}
