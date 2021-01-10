@@ -32,6 +32,7 @@ export const ProductList = ({ props }) => {
                             <div className="product__name">{product.name}</div>
                             <div className="product__family">{product.family.name}</div>
                             <div className="product__group">{product.group.name}</div>
+
                             {product.currentuser_created === true
                             ? (
                                 <div>
@@ -45,20 +46,33 @@ export const ProductList = ({ props }) => {
                                 </div>
                                 )
                             : ""}
+                            
                         </section>
 
                         <section className="container__ratings">      
-                                              
-                            <div>My Rating 
-                                <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>
-                                    Rate
-                                </button>
-                                <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.id}` })}}>
-                                    Edit
-                                </button>
+                            <div className="container__rating">Avg Rating 
+                                {product.average_rated === true
+                                ? (
+                                    <div className="product__avgrating">{product.average_rating}</div>
+                                )
+                                : "n/a"
+                                }
                             </div>
 
-                            <div>Avg Rating </div>
+                            <div className="container__rating">My Rating 
+                                 {
+                                 product.currentuser_rated === true
+                                ? (<>
+                                        <div className="product__userrating">{product.currentuser_rating}</div>
+                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.id}` })}}>Edit Rating</button>
+                                    </>)
+                                : (<>   
+                                    {/* <div>n/a</div>                            */}
+                                    <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button>
+                                    </>)
+                                }
+
+                            </div>
 
                         </section>
 
