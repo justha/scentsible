@@ -12,7 +12,14 @@ export const ProductForm = (props) => {
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
 
-    const [prodObj, setProdObj] = useState({})
+    //Defines and sets current working prodObj state to default values 
+    const [prodObj, setProdObj] = useState({
+        name: "",
+        image_url: "",
+        group_id: 0,
+        brand_id: 0,
+        family_id: 0,
+    })
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     const productId = parseInt(props.match.params.productId)
 
