@@ -32,7 +32,7 @@ export const ProductList = ({ props }) => {
                             <div className="product__name">{product.name}</div>
                             <div className="product__family">{product.family.name}</div>
                             <div className="product__group">{product.group.name}</div>
-                            {product.currentuser === true
+                            {product.currentuser_created === true
                             ? (
                                 <div>
                                     <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}>

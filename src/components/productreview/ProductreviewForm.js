@@ -9,10 +9,9 @@ import "./Productreview.css"
 
 
 export const ProductreviewForm = (props) => {
-    const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext)
-    const { ratings, getRatings } = useContext(RatingContext)
-
     const { product, getProductById } = useContext(ProductContext)
+    const { ratings, getRatings } = useContext(RatingContext)
+    const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext) 
 
     const [prodreviewObj, setProdreviewObj] = useState({})
     const productId = parseInt(props.match.url.split("/")[3])
@@ -59,11 +58,11 @@ export const ProductreviewForm = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="rating_id">Product Scent Strength Rating: </label> */}
+                    {/* <label htmlFor="rating_id">Scent Strength Rating: </label> */}
                     <select name="rating_id" className="form-control"
                         value={prodreviewObj.rating_id}
                         onChange={handleControlledInputChange}>
-                        <option value="0">Product Scent Strength</option>
+                        <option value="0">Scent Strength</option>
                             {ratings.map(rating => {
                                 return <option value={rating.id}>{rating.name}</option>
                             })}
