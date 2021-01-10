@@ -55,7 +55,7 @@ export const ApplicationViews = (props) => {
             </ProductProvider>
 
 
-            {/* <ProductreviewProvider>
+            <ProductreviewProvider>
                 <ProductProvider>
                     <RatingProvider>
 
@@ -63,13 +63,13 @@ export const ApplicationViews = (props) => {
                             render={(props) => <ProductreviewList {...props} />}
                         />
                         
-                        <Route exact path="/productreviews/create" 
+                        <Route exact path="/productreviews/create/:productId(\d+)" 
                             render={(props) => <ProductreviewForm {...props} />}
                         />                        
                         
                     </RatingProvider>
                 </ProductProvider>                
-            </ProductreviewProvider> */}
+            </ProductreviewProvider>
 
         </>
     )

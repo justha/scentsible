@@ -16,15 +16,6 @@ export const ProductForm = (props) => {
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     const productId = parseInt(props.match.params.productId)
 
-    //Defines and sets the state of the current working prodObj to the following default values
-    // const [prodObj, setProdObj] = useState({
-    //     name: "",
-    //     image_url: "",
-    //     group_id: 0,
-    //     brand_id: 0,
-    //     family_id: 0,
-    // })
-
     //Gets the following on initialization, so that the <select> element presents options to the user
     useEffect(() => {
         getGroups()
