@@ -6,3 +6,7 @@
 .form--product > fieldset {
     border: none;
 }
+
+.container__ratings {
+    font-size: small;
+}

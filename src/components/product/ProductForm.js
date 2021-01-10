@@ -12,18 +12,16 @@ export const ProductForm = (props) => {
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
 
-    const [prodObj, setProdObj] = useState({})
+    //Defines and sets current working prodObj state to default values 
+    const [prodObj, setProdObj] = useState({
+        name: "",
+        image_url: "",
+        group_id: 0,
+        brand_id: 0,
+        family_id: 0,
+    })
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     const productId = parseInt(props.match.params.productId)
-
-    //Defines and sets the state of the current working prodObj to the following default values
-    // const [prodObj, setProdObj] = useState({
-    //     name: "",
-    //     image_url: "",
-    //     group_id: 0,
-    //     brand_id: 0,
-    //     family_id: 0,
-    // })
 
     //Gets the following on initialization, so that the <select> element presents options to the user
     useEffect(() => {
@@ -46,7 +44,6 @@ export const ProductForm = (props) => {
         : (newProduct[browserEvent.target.name] = parseInt(browserEvent.target.value))
 
         setProdObj(newProduct)
-        console.log("prodObj >>", prodObj)
     }
 
     return (
@@ -164,6 +161,8 @@ export const ProductForm = (props) => {
                             
                             addProduct(newProduct)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+
+                            console.log("prodObj>>",prodObj)
                         }}
                     >
                     Save

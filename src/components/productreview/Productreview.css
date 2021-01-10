@@ -1,0 +1,8 @@
+.form--productreview,
+.button--createProductreview {
+    text-align: center;
+}
+
+.form--productreview > fieldset {
+    border: none;
+}
