@@ -13,7 +13,13 @@ export const ProductreviewForm = (props) => {
     const { ratings, getRatings } = useContext(RatingContext)
     const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext) 
 
-    const [prodreviewObj, setProdreviewObj] = useState({})
+    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide inputs/selections that are not required 
+    const [prodreviewObj, setProdreviewObj] = useState({
+        review_date: "",
+        review: "",
+        rating_id: 0,
+        product_id: 0,
+    })
     const productId = parseInt(props.match.url.split("/")[3])
     const jsonDate = new Date(Date.now()).toJSON().slice(0, 10)
 

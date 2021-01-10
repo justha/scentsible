@@ -12,7 +12,7 @@ export const ProductForm = (props) => {
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
 
-    //Defines and sets current working prodObj state to default values 
+    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide inputs/selections that are not required 
     const [prodObj, setProdObj] = useState({
         name: "",
         image_url: "",
