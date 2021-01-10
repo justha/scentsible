@@ -12,7 +12,7 @@ export const ProductForm = (props) => {
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
 
-    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide inputs/selections that are not required 
+    //Defines and sets current working prodObj state to default values, so that users can save new product without having to provide image_url (not required)
     const [prodObj, setProdObj] = useState({
         name: "",
         image_url: "",
@@ -22,9 +22,11 @@ export const ProductForm = (props) => {
     })
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     const productId = parseInt(props.match.params.productId)
+    console.log("productId>>",productId)
 
     //Gets the following on initialization, so that the <select> element presents options to the user
     useEffect(() => {
+        console.log("prodObj>>",prodObj)
         getGroups()
         getBrands()
         getFamilies()
@@ -45,6 +47,9 @@ export const ProductForm = (props) => {
 
         setProdObj(newProduct)
     }
+
+    console.log("prodObj>>",prodObj)
+
 
     return (
         <form className="form--product">
@@ -110,7 +115,7 @@ export const ProductForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     {/* <label htmlFor="image_url">Image URL </label> */}
-                    <input type="text" name="image_url" className="form-control" required autoFocus 
+                    <input type="text" name="image_url" className="form-control" autoFocus 
                         placeholder="Image URL"
                         defaultValue={prodObj.image_url}
                         onChange={handleControlledInputChange}

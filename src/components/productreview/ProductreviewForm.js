@@ -13,12 +13,9 @@ export const ProductreviewForm = (props) => {
     const { ratings, getRatings } = useContext(RatingContext)
     const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext) 
 
-    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide inputs/selections that are not required 
+    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide review comments (not required)
     const [prodreviewObj, setProdreviewObj] = useState({
-        review_date: "",
         review: "",
-        rating_id: 0,
-        product_id: 0,
     })
     const productId = parseInt(props.match.url.split("/")[3])
     const jsonDate = new Date(Date.now()).toJSON().slice(0, 10)
@@ -79,7 +76,7 @@ export const ProductreviewForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     {/* <label htmlFor="name">Product Review: </label> */}
-                    <input type="text" name="review" className="form-control" required autoFocus 
+                    <input type="text" name="review" className="form-control" autoFocus 
                         placeholder="Review Comments"
                         defaultValue={prodreviewObj.review}
                         onChange={handleControlledInputChange}

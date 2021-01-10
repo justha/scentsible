@@ -25,7 +25,6 @@ export const ProductProvider = (props) => {
             }
           })
             .then(res => res.json())
-            .then(setProduct)
     }
 
     const getProductsByUser = (userId) => {
