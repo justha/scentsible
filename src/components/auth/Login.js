@@ -32,7 +32,6 @@ export const Login = (props) => {
   };
 
   const handleLogin = (e) => {
-    console.log(user.current.value, password.current.value);
     e.preventDefault();
     existingUserCheck().then((exists) => {
       if (exists.valid) {
