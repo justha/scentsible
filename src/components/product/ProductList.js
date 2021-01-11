@@ -2,12 +2,17 @@ import React, { useContext, useEffect, useState} from "react"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
+import { FamilyContext } from "../family/FamilyProvider"
+import { GroupContext } from "../group/GroupProvider"
+
 
 
 export const ProductList = ({ props }) => {
     
-    const { products, getProducts, deleteProduct } = useContext(ProductContext)
+    const { products, getProducts, deleteProduct, getProductsByGroup, getProductsByFamily } = useContext(ProductContext)
     const { productreviews, deleteProductreview } = useContext(ProductreviewContext)
+    const { families, getFamilies } = useContext(FamilyContext)
+    const { groups, getGroups } = useContext(GroupContext)
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
@@ -15,6 +20,8 @@ export const ProductList = ({ props }) => {
     
     useEffect(() => {
         getProducts()
+        getGroups()
+        getFamilies()
     }, [])
     
     useEffect(() => {
@@ -26,8 +33,20 @@ export const ProductList = ({ props }) => {
         getProducts()
         setArrayOfProducts(products);
     }, [productreviews])
-    
-    
+
+   
+    const renderFilters = () => {
+        return (
+            <>
+                <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                {groups.map(group => {
+                    return <button className="button--filterGroup" as={Link} onClick={() => getProductsByGroup(group.id).then(setArrayOfProducts)} > {group.name} </button>
+                })}
+            </>
+        )
+        console.log("arrayOfProducts>>",arrayOfProducts)
+    }
+
     const renderList = (arrayOfProducts) => {
         return (
             arrayOfProducts.map(product => {
@@ -90,9 +109,14 @@ export const ProductList = ({ props }) => {
     
     return (
         <>
-            <div>            
+            <div>
+
+                {products !== []
+                ? renderFilters()
+                : ""}
+
                 <header className="products__header"> 
-                    <h2>All Products</h2> 
+                    <h2>Products</h2> 
 
                     <button 
                         className="button--addProduct" 
