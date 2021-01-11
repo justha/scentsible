@@ -84,8 +84,8 @@ export const ProductList = ({ props }) => {
                                  {
                                  product.currentuser_productreview_id === null
                                 ? (<>   
-                                    {/* <div>n/a</div>*/}
-                                    <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button>
+                                        <div>n/a</div>
+                                        <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button>
                                     </>)
                                 : (<>
                                         <div className="product__userrating">{product.currentuser_rating}</div>
