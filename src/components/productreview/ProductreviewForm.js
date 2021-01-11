@@ -9,12 +9,17 @@ import "./Productreview.css"
 
 
 export const ProductreviewForm = (props) => {
-    const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext)
-    const { ratings, getRatings } = useContext(RatingContext)
-
     const { product, getProductById } = useContext(ProductContext)
+    const { ratings, getRatings } = useContext(RatingContext)
+    const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext) 
 
-    const [prodreviewObj, setProdreviewObj] = useState({})
+    //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide review comments (not required)
+    const [prodreviewObj, setProdreviewObj] = useState({
+        review: "",
+        review_date: "",
+        rating_id: 0,
+        product_id: 0,
+    })
     const productId = parseInt(props.match.url.split("/")[3])
     const jsonDate = new Date(Date.now()).toJSON().slice(0, 10)
 
@@ -26,28 +31,30 @@ export const ProductreviewForm = (props) => {
     useEffect(() => {
         getRatings()
         getProductById(productId)
+        console.log("productreviewId>>",productreviewId)
         
         if (editMode) {
             getProductreviewById(productreviewId).then(setProdreviewObj)
         }
     }, [])
     
-   
+    
     //Updates prodreviewObj state variable every time the state of an input fields changes;
     //Note that 'name' and 'image_url' are text input fields, whereas the others are select drop-downs
     const handleControlledInputChange = (browserEvent) => {
         const newProductreview = Object.assign({}, prodreviewObj)
-
+        
         browserEvent.target.name === "review" 
         ? (newProductreview[browserEvent.target.name] = browserEvent.target.value)
         : (newProductreview[browserEvent.target.name] = parseInt(browserEvent.target.value))
-
+        
         setProdreviewObj(newProductreview)
+        console.log("prodreviewObj>>",prodreviewObj)
     }
 
     return (
         <form className="form--productreview">
-            <h2 className="productreviewForm__title">{editMode ? "Edit This Product Review" : "Review This Product"}</h2>
+            <h2 className="productreviewForm__title">{editMode ? "Edit Your Product Review" : "Review This Product"}</h2>
 
             <section key={`product--${product.id}`} className="product">
                 {/* <div className="product__brand">{product.brand.name}</div>
@@ -59,11 +66,11 @@ export const ProductreviewForm = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="rating_id">Product Scent Strength Rating: </label> */}
+                    {/* <label htmlFor="rating_id">Scent Strength Rating: </label> */}
                     <select name="rating_id" className="form-control"
                         value={prodreviewObj.rating_id}
                         onChange={handleControlledInputChange}>
-                        <option value="0">Product Scent Strength</option>
+                        <option value="0">Scent Strength</option>
                             {ratings.map(rating => {
                                 return <option value={rating.id}>{rating.name}</option>
                             })}
@@ -74,7 +81,7 @@ export const ProductreviewForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     {/* <label htmlFor="name">Product Review: </label> */}
-                    <input type="text" name="review" className="form-control" required autoFocus 
+                    <input type="text" name="review" className="form-control" autoFocus 
                         placeholder="Review Comments"
                         defaultValue={prodreviewObj.review}
                         onChange={handleControlledInputChange}

@@ -20,42 +20,54 @@ export const ApplicationViews = (props) => {
             <Route exact path="/">
             </Route>
 
-            <ProductProvider>
-                {/* <ProductreviewProvider> */}
-                    <BrandProvider>
-                        <FamilyProvider>
-                            <GroupProvider>
-                                <RatingProvider>
-
-                                    <Route exact path="/home" 
-                                        render={(props) => <Homepage {...props} />}
-                                    />
-
-                                    <Route exact path="/products" 
-                                        render={(props) => <ProductList {...props} />}
-                                    />
-
-                                    <Route exact path="/products/create" 
-                                        render={(props) => <ProductForm {...props} />}
-                                    />
-
-                                    <Route exact path="/products/edit/:productId(\d+)" 
-                                        render={(props) => <ProductForm {...props} />}
-                                    />
-                                    
-                                    {/* <Route path="/products/:productId(\d+)"
-                                        render={(props) => <ProductDetail {...props} />}
-                                    /> */}
-                                    
-                                </RatingProvider>
-                            </GroupProvider>
-                        </FamilyProvider>
-                    </BrandProvider>
-                {/* </ProductreviewProvider> */}
-            </ProductProvider>
-
-
             <ProductreviewProvider>
+                <ProductProvider>
+                        <BrandProvider>
+                            <FamilyProvider>
+                                <GroupProvider>
+                                    <RatingProvider>
+
+                                        <Route exact path="/home" 
+                                            render={(props) => <Homepage {...props} />}
+                                        />
+
+                                        <Route exact path="/products" 
+                                            render={(props) => <ProductList {...props} />}
+                                        />
+
+                                        <Route exact path="/products/create" 
+                                            render={(props) => <ProductForm {...props} />}
+                                        />
+
+                                        <Route exact path="/products/edit/:productId(\d+)" 
+                                            render={(props) => <ProductForm {...props} />}
+                                        />
+                                        
+                                        {/* <Route path="/products/:productId(\d+)"
+                                            render={(props) => <ProductDetail {...props} />}
+                                        /> */}
+                                        
+                                        <Route exact path="/productreviews" 
+                                            render={(props) => <ProductreviewList {...props} />}
+                                        />
+
+                                        <Route exact path="/productreviews/create/:productId(\d+)" 
+                                            render={(props) => <ProductreviewForm {...props} />}
+                                        />                        
+                                        
+                                        <Route exact path="/productreviews/edit/:productreviewId(\d+)" 
+                                            render={(props) => <ProductreviewForm {...props} />}
+                                        />                        
+                                        
+                                    </RatingProvider>
+                                </GroupProvider>
+                            </FamilyProvider>
+                        </BrandProvider>
+                </ProductProvider>
+            </ProductreviewProvider>
+
+
+            {/* <ProductreviewProvider>
                 <ProductProvider>
                     <RatingProvider>
 
@@ -69,7 +81,7 @@ export const ApplicationViews = (props) => {
                         
                     </RatingProvider>
                 </ProductProvider>                
-            </ProductreviewProvider>
+            </ProductreviewProvider> */}
 
         </>
     )
