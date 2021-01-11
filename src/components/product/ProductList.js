@@ -18,7 +18,6 @@ export const ProductList = ({ props }) => {
     }, [])
     
     useEffect(() => {
-        getProducts()
         setArrayOfProducts(products);
     }, [products])
     
