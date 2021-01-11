@@ -3,8 +3,8 @@ import React, { useState } from "react"
 export const ProductContext = React.createContext()
 
 export const ProductProvider = (props) => {
-    const [products, setProducts] = useState([{user:{user:{first_name: ""}}, group:{name:""}, brand:{name:""}, family:{name:""}}])  
-    const [product, setProduct] = useState({user:{user:{}}})
+    const [ products, setProducts ] = useState([{user:{user:{first_name: ""}}, group:{name:""}, brand:{name:""}, family:{name:""}}])  
+    const [ product, setProduct ] = useState({user:{user:{}}})
 
     const getProducts = () => {
         return fetch("http://localhost:8000/products" , {
@@ -39,7 +39,7 @@ export const ProductProvider = (props) => {
     }
 
     const getProductsByGroup = (groupId) => {
-        return fetch(`http://localhost:8000/products?category_id=${groupId}` , {
+        return fetch(`http://localhost:8000/products?group_id=${groupId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
               "Content-Type": "application/json",   
@@ -49,7 +49,7 @@ export const ProductProvider = (props) => {
     }
 
     const getProductsByFamily = (familyId) => {
-        return fetch(`http://localhost:8000/products?category_id=${familyId}` , {
+        return fetch(`http://localhost:8000/products?family_id=${familyId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
               "Content-Type": "application/json",   

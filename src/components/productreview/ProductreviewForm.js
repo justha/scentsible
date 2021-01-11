@@ -31,7 +31,6 @@ export const ProductreviewForm = (props) => {
     useEffect(() => {
         getRatings()
         getProductById(productId)
-        console.log("productreviewId>>",productreviewId)
         
         if (editMode) {
             getProductreviewById(productreviewId).then(setProdreviewObj)
@@ -49,7 +48,6 @@ export const ProductreviewForm = (props) => {
         : (newProductreview[browserEvent.target.name] = parseInt(browserEvent.target.value))
         
         setProdreviewObj(newProductreview)
-        console.log("prodreviewObj>>",prodreviewObj)
     }
 
     return (
