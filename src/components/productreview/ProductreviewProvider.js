@@ -3,8 +3,8 @@ import React, { useState } from "react"
 export const ProductreviewContext = React.createContext()
 
 export const ProductreviewProvider = (props) => {  
-    const [productreviews, setProductreviews] = useState([{user:{user:{first_name: ""}}}])  
-    const [productreview, setProductreview] = useState({user:{user:{}}})
+    const [ productreviews, setProductreviews ] = useState([{user:{user:{first_name: ""}}, product:{name:""}}]) 
+    const [ productreview, setProductreview ] = useState({user:{user:{}}})
 
     const getProductreviews = () => {
         return fetch("http://localhost:8000/productreviews" , {
@@ -39,7 +39,7 @@ export const ProductreviewProvider = (props) => {
     }
 
     const getProductreviewsByProduct = (productId) => {
-        return fetch(`http://localhost:8000/productreviews?category_id=${productId}` , {
+        return fetch(`http://localhost:8000/productreviews?product_id=${productId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
               "Content-Type": "application/json",   

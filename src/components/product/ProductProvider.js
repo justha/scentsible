@@ -3,8 +3,8 @@ import React, { useState } from "react"
 export const ProductContext = React.createContext()
 
 export const ProductProvider = (props) => {
-    const [products, setProducts] = useState([{user:{user:{first_name: ""}}, group:{name:""}, brand:{name:""}, family:{name:""}}])  
-    const [product, setProduct] = useState({user:{user:{}}})
+    const [ products, setProducts ] = useState([{user:{user:{first_name: ""}}, group:{name:""}, brand:{name:""}, family:{name:""}}])  
+    const [ product, setProduct ] = useState({user:{user:{}}})
 
     const getProducts = () => {
         return fetch("http://localhost:8000/products" , {
