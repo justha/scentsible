@@ -39,9 +39,11 @@ export const ProductList = ({ props }) => {
         return (
             <>
                 <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                {groups.map(group => {
-                    return <button className="button--filterGroup" as={Link} onClick={() => getProductsByGroup(group.id).then(setArrayOfProducts)} > {group.name} </button>
-                })}
+                {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
+                    onClick={(event) => {
+                        const groupId = parseInt(event.target.value)
+                        getProductsByGroup(groupId).then(setArrayOfProducts)}}
+                    > {group.name} </button>})}
             </>
         )
         console.log("arrayOfProducts>>",arrayOfProducts)

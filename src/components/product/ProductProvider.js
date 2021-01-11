@@ -39,7 +39,7 @@ export const ProductProvider = (props) => {
     }
 
     const getProductsByGroup = (groupId) => {
-        return fetch(`http://localhost:8000/products?category_id=${groupId}` , {
+        return fetch(`http://localhost:8000/products?group_id=${groupId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
               "Content-Type": "application/json",   
