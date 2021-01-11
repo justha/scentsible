@@ -55,6 +55,10 @@ export const ApplicationViews = (props) => {
                                             render={(props) => <ProductreviewForm {...props} />}
                                         />                        
                                         
+                                        <Route exact path="/productreviews/edit/:productreviewId(\d+)" 
+                                            render={(props) => <ProductreviewForm {...props} />}
+                                        />                        
+                                        
                                     </RatingProvider>
                                 </GroupProvider>
                             </FamilyProvider>

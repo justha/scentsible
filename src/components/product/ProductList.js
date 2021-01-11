@@ -50,25 +50,25 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         <section className="container__ratings">      
-                            <div className="container__rating">Avg Rating 
+                            {/* <div className="container__rating">Avg Rating 
                                 {product.average_rated === true
                                 ? (
                                     <div className="product__avgrating">{product.average_rating}</div>
                                 )
                                 : "n/a"
                                 }
-                            </div>
+                            </div> */}
 
                             <div className="container__rating">My Rating 
                                  {
-                                 product.currentuser_rated === true
-                                ? (<>
-                                        <div className="product__userrating">{product.currentuser_rating}</div>
-                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.id}` })}}>Edit Rating</button>
-                                    </>)
-                                : (<>   
-                                    {/* <div>n/a</div>                            */}
+                                 product.currentuser_productreview_id === null
+                                ? (<>   
+                                    {/* <div>n/a</div>*/}
                                     <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button>
+                                    </>)
+                                : (<>
+                                        <div className="product__userrating">{product.currentuser_rating}</div>
+                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}>Edit Rating</button>
                                     </>)
                                 }
 

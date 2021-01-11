@@ -16,6 +16,9 @@ export const ProductreviewForm = (props) => {
     //Defines and sets current working prodObj state to default values, so that users can save new products without having to provide review comments (not required)
     const [prodreviewObj, setProdreviewObj] = useState({
         review: "",
+        review_date: "",
+        rating_id: 0,
+        product_id: 0,
     })
     const productId = parseInt(props.match.url.split("/")[3])
     const jsonDate = new Date(Date.now()).toJSON().slice(0, 10)
@@ -28,28 +31,30 @@ export const ProductreviewForm = (props) => {
     useEffect(() => {
         getRatings()
         getProductById(productId)
+        console.log("productreviewId>>",productreviewId)
         
         if (editMode) {
             getProductreviewById(productreviewId).then(setProdreviewObj)
         }
     }, [])
     
-   
+    
     //Updates prodreviewObj state variable every time the state of an input fields changes;
     //Note that 'name' and 'image_url' are text input fields, whereas the others are select drop-downs
     const handleControlledInputChange = (browserEvent) => {
         const newProductreview = Object.assign({}, prodreviewObj)
-
+        
         browserEvent.target.name === "review" 
         ? (newProductreview[browserEvent.target.name] = browserEvent.target.value)
         : (newProductreview[browserEvent.target.name] = parseInt(browserEvent.target.value))
-
+        
         setProdreviewObj(newProductreview)
+        console.log("prodreviewObj>>",prodreviewObj)
     }
 
     return (
         <form className="form--productreview">
-            <h2 className="productreviewForm__title">{editMode ? "Edit This Product Review" : "Review This Product"}</h2>
+            <h2 className="productreviewForm__title">{editMode ? "Edit Your Product Review" : "Review This Product"}</h2>
 
             <section key={`product--${product.id}`} className="product">
                 {/* <div className="product__brand">{product.brand.name}</div>
