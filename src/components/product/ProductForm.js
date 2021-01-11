@@ -22,11 +22,9 @@ export const ProductForm = (props) => {
     })
     const editMode = props.match.url.split("/")[2] === "edit" //Checks URL to determine if in editMode
     const productId = parseInt(props.match.params.productId)
-    console.log("productId>>",productId)
 
     //Gets the following on initialization, so that the <select> element presents options to the user
     useEffect(() => {
-        console.log("prodObj>>",prodObj)
         getGroups()
         getBrands()
         getFamilies()
@@ -47,8 +45,6 @@ export const ProductForm = (props) => {
 
         setProdObj(newProduct)
     }
-
-    console.log("prodObj>>",prodObj)
 
 
     return (
@@ -166,8 +162,6 @@ export const ProductForm = (props) => {
                             
                             addProduct(newProduct)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
-
-                            console.log("prodObj>>",prodObj)
                         }}
                     >
                     Save

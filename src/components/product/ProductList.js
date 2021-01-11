@@ -38,15 +38,29 @@ export const ProductList = ({ props }) => {
     const renderFilters = () => {
         return (
             <>
-                <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
-                    onClick={(event) => {
-                        const groupId = parseInt(event.target.value)
-                        getProductsByGroup(groupId).then(setArrayOfProducts)}}
-                    > {group.name} </button>})}
+                <section> 
+                    <div>View by Product Group</div>
+                    <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                    {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
+                        onClick={(event) => {
+                            const groupId = parseInt(event.target.value)
+                            getProductsByGroup(groupId).then(setArrayOfProducts)}}
+                        > {group.name} </button>})}
+                </section>
+
+                <br></br>
+
+                <section> 
+                    <div>View by Scent Family</div>
+                    <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                    {families.map(familiy => {return <button className="button--filterGroup" as={Link} value={familiy.id} 
+                        onClick={(event) => {
+                            const familyId = parseInt(event.target.value)
+                            getProductsByGroup(familyId).then(setArrayOfProducts)}}
+                        > {familiy.name} </button>})}
+                </section>
             </>
         )
-        console.log("arrayOfProducts>>",arrayOfProducts)
     }
 
     const renderList = (arrayOfProducts) => {
