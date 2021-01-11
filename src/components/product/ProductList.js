@@ -47,16 +47,15 @@ export const ProductList = ({ props }) => {
                             getProductsByGroup(groupId).then(setArrayOfProducts)}}
                         > {group.name} </button>})}
                 </section>
-
                 <br></br>
 
                 <section> 
-                    <div>View by Scent Family</div>
+                    <div>View by Scent</div>
                     <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
                     {families.map(familiy => {return <button className="button--filterGroup" as={Link} value={familiy.id} 
                         onClick={(event) => {
                             const familyId = parseInt(event.target.value)
-                            getProductsByGroup(familyId).then(setArrayOfProducts)}}
+                            getProductsByFamily(familyId).then(setArrayOfProducts)}}
                         > {familiy.name} </button>})}
                 </section>
             </>
@@ -87,27 +86,23 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         <section className="container__ratings">      
-                            {/* <div className="container__rating">Avg Rating 
-                                {product.average_rated === true
-                                ? (
-                                    <div className="product__avgrating">{product.average_rating}</div>
-                                )
-                                : "n/a"
+                            <div className="container__rating">Avg Rating 
+                                {
+
+                                
+                                    product.average_rated === true
+                                    ? (<div className="product__avgrating">{product.average_rating}</div>)
+                                    : "n/a"
                                 }
-                            </div> */}
+                            </div>
 
                             <div className="container__rating">My Rating 
                                  {
-                                 product.currentuser_productreview_id === null
-                                ? (<>   
-                                        <div>n/a</div>
-                                        <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button>
-                                    </>)
-                                : (<>
-                                        <div className="product__userrating">{product.currentuser_rating}</div>
+                                    product.currentuser_productreview_id === null
+                                    ? (<> <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button> </>)
+                                    : (<> <div className="product__userrating">{product.currentuser_rating}</div>
                                         <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> Edit Rating </button>
-                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button>
-                                    </>)
+                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button> </>)
                                 }
 
                             </div>

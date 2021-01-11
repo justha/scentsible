@@ -49,7 +49,7 @@ export const ProductProvider = (props) => {
     }
 
     const getProductsByFamily = (familyId) => {
-        return fetch(`http://localhost:8000/products?category_id=${familyId}` , {
+        return fetch(`http://localhost:8000/products?family_id=${familyId}` , {
             headers: {
               Authorization: `Token ${localStorage.getItem("scentsible_user_id")}`,
               "Content-Type": "application/json",   
