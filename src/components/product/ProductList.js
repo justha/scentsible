@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState} from "react"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
+import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 
 
 export const ProductList = ({ props }) => {
     
     const { products, getProducts, deleteProduct } = useContext(ProductContext)
+    const { productreviews, deleteProductreview } = useContext(ProductreviewContext)
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
@@ -15,10 +17,16 @@ export const ProductList = ({ props }) => {
         getProducts()
     }, [])
     
-    
     useEffect(() => {
+        getProducts()
         setArrayOfProducts(products);
     }, [products])
+    
+    //Upon changes to productreviews, gets products and re-sets array of products to refresh ProductList
+    useEffect(() => {
+        getProducts()
+        setArrayOfProducts(products);
+    }, [productreviews])
     
     
     const renderList = (arrayOfProducts) => {
@@ -36,13 +44,8 @@ export const ProductList = ({ props }) => {
                             {product.currentuser_created === true
                             ? (
                                 <div>
-                                    <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}>
-                                        ✐ Edit Product
-                                    </button>
-                
-                                    <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> 
-                                        Delete Product
-                                    </button>
+                                    <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}> ✐ Edit Product </button>
+                                    <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> Delete Product </button>
                                 </div>
                                 )
                             : ""}
@@ -68,7 +71,8 @@ export const ProductList = ({ props }) => {
                                     </>)
                                 : (<>
                                         <div className="product__userrating">{product.currentuser_rating}</div>
-                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}>Edit Rating</button>
+                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> Edit Rating </button>
+                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button>
                                     </>)
                                 }
 
