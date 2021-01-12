@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState} from "react"
+import React, { useContext, useEffect, useState, useRef} from "react"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
 import { ProductDetailModal } from "./ProductDetailModal"
+import { Modal } from "react-modal"
 
 
 
@@ -83,7 +84,7 @@ export const ProductList = ({ props }) => {
                 let ratingAvg = ""
                 ratingCount !== 0
                 ? (ratingAvg = ratingSum/ratingCount)
-                : (ratingAvg = "Not Rated Yet")
+                : (ratingAvg = " Not Rated ")
 
                 return (<>
                     <article className="container__card">                        
@@ -109,7 +110,7 @@ export const ProductList = ({ props }) => {
 
                             <div className="container__rating">My Rating 
                                 {product.currentuser_productreview_id === null
-                                    ? (<> <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}>Rate Now</button> </>)
+                                    ? (<> <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}> Rate Now </button> </>)
                                     : (<> <div className="product__userrating">{product.currentuser_rating}</div>
                                         <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> Edit Rating </button>
                                         <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button> </>)}
@@ -117,8 +118,8 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         <section>
-                            <button className="button--viewProductDetailModal" onClick={onOpen}>details</button>
-                            {/* <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}><small>🔍</small></button> */}
+                            <button className="button--viewProductDetail" onClick={onOpen}> ℹ︎ </button>
+                            {/* <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </button> */}
                         </section>
                     </article>
                     <br></br>
@@ -149,23 +150,18 @@ export const ProductList = ({ props }) => {
                 ? renderList(arrayOfProducts)
                 : ""}
 
-                <div>
-                    {open && (
-                        <dialog
+                {/* {open && ( */}
+                    <Modal className="dialog dialog--ProductDetail"
+                        open={open}
                         onEsc={onClose}
                         onClickOutside={onClose}
                         responsive={true}
                         position="center"
-                        >
-                        <section width="medium" size="small" margin="small">
-                            <h3>Product Details</h3>
-                            <div>
-                                <button label="Close" onClick={onClose}></button>
-                            </div>
-                        </section>
-                        </dialog>
-                    )}
-                </div>
+                    >
+                        <div>Product Details</div>
+                        <button className="button--close" onClick={onClose}>Close</button>
+                    </Modal>
+                {/* )} */}
 
             </div>
         </>

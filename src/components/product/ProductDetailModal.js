@@ -44,7 +44,7 @@ export const ProductDetailModal = ({ open, onClose }) => {
     let ratingAvg = ""
     ratingCount !== 0
     ? (ratingAvg = ratingSum/ratingCount)
-    : (ratingAvg = "Not Rated Yet")
+    : (ratingAvg = " Not Rated ")
 
     return (<>
         <article className="container__card">                        
@@ -63,7 +63,7 @@ export const ProductDetailModal = ({ open, onClose }) => {
 
                 <div className="container__rating">My Rating 
                     {prodDetailObj.currentuser_productreview_id === null
-                        ? (<div> Not Rated Yet </div>)
+                        ? (<div> Not Rated </div>)
                         : (<div className="product__userrating">{prodDetailObj.currentuser_rating}</div>)}
                 </div>
             </section>
