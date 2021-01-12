@@ -177,26 +177,18 @@ export const ProductList = ({ props }) => {
                                 {product.currentuser_productreview_id === null
                                 ? ""
                                 : (<> 
-                                    <IconButton 
+                                    {/* <IconButton 
                                         className="button--EditRating" 
                                         as={Link} 
-                                        onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}
-                                        // variant="text"
-                                        // color="primary"
-                                        // size="small"
-                                        // startIcon={<EditOutlinedIcon />}
+                                        onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}                             
                                     > 
-                                        {/* Edit Rating  */}
+                                        Edit Rating 
                                         <EditOutlinedIcon />
-                                    </IconButton>
+                                    </IconButton> */}
                                     <IconButton 
                                         className="button--DeleteRating" 
                                         as={Link} 
                                         onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
-                                        // variant="text"
-                                        // color="primary"
-                                        // size="small"
-                                        // startIcon={<DeleteOutlineOutlinedIcon />}
                                     > 
                                         {/* Delete Rating  */}
                                         <DeleteOutlineOutlinedIcon />

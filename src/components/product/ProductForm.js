@@ -111,16 +111,16 @@ export const ProductForm = (props) => {
                 </div>
             </fieldset>
 
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
-                    {/* <label htmlFor="image_url">Image URL </label> */}
+                    <label htmlFor="image_url">Image URL </label>
                     <input type="text" name="image_url" className="form-control" autoFocus 
                         placeholder="Image URL"
                         defaultValue={prodObj.image_url}
                         onChange={handleControlledInputChange}
                     />
                 </div>
-            </fieldset>
+            </fieldset> */}
             
 
             {editMode 
