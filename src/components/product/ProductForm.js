@@ -4,6 +4,9 @@ import { BrandContext } from "../brand/BrandProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
 import "./Product.css"
+import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
+
 
 
 export const ProductForm = (props) => {
@@ -123,8 +126,8 @@ export const ProductForm = (props) => {
             {editMode 
             ? (
                 <div>                    
-                <button 
-                    className="button--addProduct"
+                <Button 
+                    className="button--updateProduct"
                     type="submit"
                     onClick={clickEvent => {
                         clickEvent.preventDefault()  // Prevents form from being submitted
@@ -140,14 +143,18 @@ export const ProductForm = (props) => {
                         updateProduct(revisedProduct)  // Sends PUT request to API
                         .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                     }}
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    startIcon={<SaveIcon />}
                 >
                 Update
-                </button>
+                </Button>
             </div>
             )
             : (
                 <div>                    
-                    <button 
+                    <Button 
                         className="button--addProduct"
                         type="submit"
                         onClick={clickEvent => {
@@ -163,9 +170,13 @@ export const ProductForm = (props) => {
                             addProduct(newProduct)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    startIcon={<SaveIcon />}
                     >
                     Save
-                    </button>
+                    </Button>
                 </div>
             )
             }

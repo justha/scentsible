@@ -5,7 +5,14 @@ import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
 // import { ProductDetail } from "./ProductDetail"
-
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import AddIcon from '@material-ui/icons/Add'
+import EditIcon from '@material-ui/icons/Edit'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import DeleteIcon from '@material-ui/icons/Delete'
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
+import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined' //star icon
 
 export const ProductList = ({ props }) => {
     
@@ -39,25 +46,26 @@ export const ProductList = ({ props }) => {
     const renderFilters = () => {
         return (
             <>
-                <section> 
-                    <div>View by Product Group</div>
-                    <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                    {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
-                        onClick={(event) => {
-                            const groupId = parseInt(event.target.value)
-                            getProductsByGroup(groupId).then(setArrayOfProducts)}}
-                        > {group.name} </button>})}
-                </section>
-                <br></br>
+                <section className="container--filterGroup">                    
+                    <article className="container--filterSet"> 
+                        <h3 className="filter__title">View by Product Group</h3>
+                        <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                        {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
+                            onClick={(event) => {
+                                const groupId = parseInt(event.target.value)
+                                getProductsByGroup(groupId).then(setArrayOfProducts)}}
+                            > {group.name} </button>})}
+                    </article>
 
-                <section> 
-                    <div>View by Scent</div>
-                    <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                    {families.map(familiy => {return <button className="button--filterGroup" as={Link} value={familiy.id} 
-                        onClick={(event) => {
-                            const familyId = parseInt(event.target.value)
-                            getProductsByFamily(familyId).then(setArrayOfProducts)}}
-                        > {familiy.name} </button>})}
+                    <article className="container--filterSet"> 
+                        <h3 className="filter__title">View by Scent</h3>
+                        <button className="button--filterFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                        {families.map(familiy => {return <button className="button--filterFamily" as={Link} value={familiy.id} 
+                            onClick={(event) => {
+                                const familyId = parseInt(event.target.value)
+                                getProductsByFamily(familyId).then(setArrayOfProducts)}}
+                            > {familiy.name} </button>})}
+                    </article>
                 </section>
             </>
         )
@@ -84,43 +92,123 @@ export const ProductList = ({ props }) => {
                 return (<>
                     <article className="container__card">                        
                         <section key={`product--${product.id}`} className="product">
-                            <div className="product__brand">{product.brand.name}</div>
-                            <div className="product__name">{product.name}</div>
-                            <div className="product__family">{product.family.name}</div>
-                            <div className="product__group">{product.group.name}</div>
 
-                            {product.currentuser_created === true
-                            ? (<>
-                                <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}> 
-                                    ✐ Edit Product </button>
-                                <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> 
-                                    Delete Product </button></>)
-                            : ""}
+                            <div className="product__text">                                
+                                <div className="product__brand">{product.brand.name}</div>
+                                <div className="product__name">{product.name}</div>
+                                <div className="product__group">{product.group.name}</div>
+                                <div className="product__family">{product.family.name}</div>
+                            </div>
+
+                            <div className="product__image">                                
+                                <img 
+                                    className="product__imgURL" 
+                                    src={
+                                        product.group_id === 1
+                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451815/scentsible/haircare_lus5zz.png"
+                                        : (product.group_id === 2
+                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451820/scentsible/skincare_hg5tb0.png"
+                                            : (product.group_id === 3
+                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451828/scentsible/makeup_ta7kln.png"
+                                                : ""
+                                            )
+                                        )
+                                    }
+                                    alt="product">                            
+                                </img>
+                            </div>
+
+                            <div className="product__buttons">                                
+                                {product.currentuser_created === true
+                                ? (<>
+                                    <Button 
+                                        className="button--editProduct" 
+                                        as={Link} 
+                                        onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}
+                                        variant="text"
+                                        size="small" 
+                                        // color="primary"
+                                        startIcon={<EditIcon />}
+                                        > 
+                                        Edit Product 
+                                    </Button>
+                                    <Button 
+                                        className="button--deleteProduct" 
+                                        as={Link} 
+                                        onClick={() => {deleteProduct(`${product.id}`)}}
+                                        variant="text" 
+                                        size="small" 
+                                        // color="primary"
+                                        startIcon={<DeleteIcon />}
+                                        > 
+                                        Delete Product 
+                                    </Button></>
+                                    )
+                                : ""}
+                            </div>
+
                         </section>
 
-                        <section className="container__ratings">      
-                            <article className="container__rating">
-                                <div> Avg Rating  </div>
-                                <div className="product__avgRating"> {avgRating} </div>
+                        <br></br>
+
+                        <section className="container__ratingAll">      
+                            <article className="container__ratingAvg">
+                                <div className="container__rating">                                    
+                                    <div className="rating__title"> Avg Rating: </div>
+                                    <div className="product__avgRating"> {avgRating} </div>
+                                </div>
                             </article>
 
-                            <article className="container__rating">
-                                <div> My Rating  </div> 
+                            <article className="container__ratingMy">
+                                <div className="rating__title"> My Rating: </div> 
                                 {product.currentuser_productreview_id === null
-                                    ? (<> 
-                                        <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}> 
-                                            Rate Now </button> </>)
-                                    : (<> 
-                                        <div className="product__myRating">{myRating.toFixed(1)}</div>
-                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> 
-                                            Edit Rating </button>
-                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> 
-                                            Delete Rating </button> </>)}
+                                    ? (<Button 
+                                            className="button--addProductreview" 
+                                            as={Link} 
+                                            onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
+                                            color="primary"
+                                            size="small"
+                                            startIcon={<AddIcon />}
+                                        > Rate Now 
+                                        </Button>)
+                                    : (<div className="product__myRating">{myRating.toFixed(1)}</div>)
+                                }
+
+                                {product.currentuser_productreview_id === null
+                                ? ""
+                                : (<> 
+                                    <IconButton 
+                                        className="button--EditRating" 
+                                        as={Link} 
+                                        onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}
+                                        // variant="text"
+                                        // color="primary"
+                                        // size="small"
+                                        // startIcon={<EditOutlinedIcon />}
+                                    > 
+                                        {/* Edit Rating  */}
+                                        <EditOutlinedIcon />
+                                    </IconButton>
+                                    <IconButton 
+                                        className="button--DeleteRating" 
+                                        as={Link} 
+                                        onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
+                                        // variant="text"
+                                        // color="primary"
+                                        // size="small"
+                                        // startIcon={<DeleteOutlineOutlinedIcon />}
+                                    > 
+                                        {/* Delete Rating  */}
+                                        <DeleteOutlineOutlinedIcon />
+                                    </IconButton> 
+                                    </>)
+                                }
+
                             </article>
                         </section>
 
                         {/* <section>
-                            <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </button>
+                            <Button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </Button>
                         </section> */}
 
                     </article>
@@ -133,26 +221,40 @@ export const ProductList = ({ props }) => {
     
     return (
         <>
-            <div>
+            <main>
 
                 {products !== []
                 ? renderFilters()
                 : ""}
 
-                <header className="products__header"> 
-                    <h2>Products</h2> 
+                <br></br>
 
-                    <button className="button--addProduct" as={Link} 
-                        onClick={() => {history.push({ pathname: "/products/create" })}}>
-                        + New Product
-                    </button>
+                <header className="products__header"> 
+                    <h2 className="title">Products</h2> 
+
+                    <div>                        
+                        <Button 
+                            className="button--addProduct" 
+                            as={Link} 
+                            onClick={() => {history.push({ pathname: "/products/create"})}}
+                            variant="contained"
+                            color="primary"
+                            size="medium"
+                            startIcon={<AddIcon />}
+                            >
+                            New Product
+                        </Button>
+                    </div>
+
                 </header>
+
+                <br></br>
                             
                 {products !== []
                 ? renderList(arrayOfProducts)
                 : ""}
 
-            </div>
+            </main>
         </>
     )
 }
