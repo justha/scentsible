@@ -4,6 +4,7 @@ import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
+import { ProductDetailModal } from "./ProductDetailModal"
 
 
 
@@ -16,6 +17,11 @@ export const ProductList = ({ props }) => {
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
+
+    //Defines state variables used for ProductDetailModal
+    const [open, setOpen] = useState()
+    const onOpen = () => setOpen(true)
+    const onClose = () => setOpen(undefined)
     
     
     useEffect(() => {
@@ -111,9 +117,9 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         <section>
-                            <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}><small>🔍</small></button>
+                            <button className="button--viewProductDetailModal" onClick={onOpen}>details</button>
+                            {/* <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}><small>🔍</small></button> */}
                         </section>
-
                     </article>
                     <br></br>
                 </>)
@@ -133,19 +139,33 @@ export const ProductList = ({ props }) => {
                 <header className="products__header"> 
                     <h2>Products</h2> 
 
-                    <button 
-                        className="button--addProduct" 
-                        as={Link} 
-                        onClick={() => {history.push({ pathname: "/products/create" })}}
-                    >
+                    <button className="button--addProduct" as={Link} 
+                        onClick={() => {history.push({ pathname: "/products/create" })}}>
                         + New Product
                     </button>
-
                 </header>
                             
                 {products !== []
                 ? renderList(arrayOfProducts)
                 : ""}
+
+                <div>
+                    {open && (
+                        <dialog
+                        onEsc={onClose}
+                        onClickOutside={onClose}
+                        responsive={true}
+                        position="center"
+                        >
+                        <section width="medium" size="small" margin="small">
+                            <h3>Product Details</h3>
+                            <div>
+                                <button label="Close" onClick={onClose}></button>
+                            </div>
+                        </section>
+                        </dialog>
+                    )}
+                </div>
 
             </div>
         </>

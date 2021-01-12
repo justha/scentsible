@@ -6,20 +6,21 @@ import { GroupContext } from "../group/GroupProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 
 
-export const ProductDetail = (props) => {
+export const ProductDetailModal = ({ open, onClose }) => {
     const { product, getProductById, deleteProduct } = useContext(ProductContext)
     const { brands, getBrands } = useContext(BrandContext)
     const { families, getFamilies } = useContext(FamilyContext)
     const { groups, getGroups } = useContext(GroupContext)
     const { productreviews, getProductreviews, deleteProductreview } = useContext(ProductreviewContext)
-    const productId = parseInt(props.match.params.productId)
+    // const productId = parseInt(props.match.params.productId)
+    const productId = 1
 
     const [prodDetailObj, setProdDetailObj] = useState({
-        name: "",
-        image_url: "",
-        group_id: 0,
-        brand_id: 0,
-        family_id: 0,
+        // name: "",
+        // image_url: "",
+        // group_id: 0,
+        // brand_id: 0,
+        // family_id: 0,
     })
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export const ProductDetail = (props) => {
         getProductreviews()
     }, [])
 
-    console.log("setProdDetailObj>>",setProdDetailObj)
+    console.log("prodDetailObj>>",prodDetailObj)
 
     let arrayOfReviews = []
     arrayOfReviews = productreviews.filter(pr => pr.product_id === product.id )
@@ -48,9 +49,9 @@ export const ProductDetail = (props) => {
     return (<>
         <article className="container__card">                        
             <section key={`product--${prodDetailObj.id}`} className="product">
-                {/* <div className="product__brand">{prodDetailObj.brand.name}</div>
+                {/* <div className="product__brand">{prodDetailObj.brand.name}</div> */}
                 <div className="product__name">{prodDetailObj.name}</div>
-                <div className="product__family">{prodDetailObj.family.name}</div>
+                {/* <div className="product__family">{prodDetailObj.family.name}</div>
                 <div className="product__group">{prodDetailObj.group.name}</div> */}
             </section>
 
@@ -70,5 +71,15 @@ export const ProductDetail = (props) => {
         </article>
         <br></br>
     </>)
+
+    return (
+        <>
+        {open && (
+            <dialog className="dialogbox__productdetails" onEsc={onClose} onClickOutside={onClose} responsive={true} position="center">
+                <button primary margin="small" label="OK" onClick={onClose} />
+            </dialog>
+        )}
+        </>
+    )
 
 }
