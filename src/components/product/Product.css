@@ -3,7 +3,8 @@
     text-align: center;
 }
 
-.form--product > fieldset {
+.form--product > fieldset, 
+.button--viewProductDetail {
     border: none;
 }
 

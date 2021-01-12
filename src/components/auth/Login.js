@@ -36,7 +36,7 @@ export const Login = (props) => {
     existingUserCheck().then((exists) => {
       if (exists.valid) {
         localStorage.setItem("scentsible_user_id", exists.token);
-        props.history.push("/home");
+        props.history.push("/products");
       } else if (exists.valid != true) {
         setShow(true);
       } else if (!exists) {

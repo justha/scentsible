@@ -93,8 +93,8 @@ export const ProductList = ({ props }) => {
                                     <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> Delete Product </button>
                                 </div>)
                             : ""}
-                            
                         </section>
+
 
                         <section className="container__ratings">      
                             <div className="container__rating">Avg Rating 
@@ -108,7 +108,10 @@ export const ProductList = ({ props }) => {
                                         <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> Edit Rating </button>
                                         <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button> </>)}
                             </div>
+                        </section>
 
+                        <section>
+                            <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}><small>🔍</small></button>
                         </section>
 
                     </article>
