@@ -4,9 +4,7 @@ import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
-import { ProductDetailModal } from "./ProductDetailModal"
-import { Modal } from "react-modal"
-
+// import { ProductDetail } from "./ProductDetail"
 
 
 export const ProductList = ({ props }) => {
@@ -19,12 +17,7 @@ export const ProductList = ({ props }) => {
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
 
-    //Defines state variables used for ProductDetailModal
-    const [open, setOpen] = useState()
-    const onOpen = () => setOpen(true)
-    const onClose = () => setOpen(undefined)
-    
-    
+
     useEffect(() => {
         getProducts()
         getGroups()
@@ -81,10 +74,12 @@ export const ProductList = ({ props }) => {
                 let ratingSum = 0
                 arrayOfReviews.forEach(review => {ratingSum += review.rating_id})
 
-                let ratingAvg = ""
+                let avgRating = ""
                 ratingCount !== 0
-                ? (ratingAvg = ratingSum/ratingCount)
-                : (ratingAvg = " Not Rated ")
+                ? (avgRating = (ratingSum/ratingCount).toFixed(1))
+                : (avgRating = " Not Rated Yet ")
+
+                const myRating = parseInt(product.currentuser_rating)
 
                 return (<>
                     <article className="container__card">                        
@@ -95,32 +90,39 @@ export const ProductList = ({ props }) => {
                             <div className="product__group">{product.group.name}</div>
 
                             {product.currentuser_created === true
-                            ? (<div>
-                                    <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}> ✐ Edit Product </button>
-                                    <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> Delete Product </button>
-                                </div>)
+                            ? (<>
+                                <button className="button--editProduct" as={Link} onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}> 
+                                    ✐ Edit Product </button>
+                                <button className="button--deleteProduct" as={Link} onClick={() => {deleteProduct(`${product.id}`)}}> 
+                                    Delete Product </button></>)
                             : ""}
                         </section>
 
-
                         <section className="container__ratings">      
-                            <div className="container__rating">Avg Rating 
-                                {ratingAvg}
-                            </div>
+                            <article className="container__rating">
+                                <div> Avg Rating  </div>
+                                <div className="product__avgRating"> {avgRating} </div>
+                            </article>
 
-                            <div className="container__rating">My Rating 
+                            <article className="container__rating">
+                                <div> My Rating  </div> 
                                 {product.currentuser_productreview_id === null
-                                    ? (<> <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}> Rate Now </button> </>)
-                                    : (<> <div className="product__userrating">{product.currentuser_rating}</div>
-                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> Edit Rating </button>
-                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> Delete Rating </button> </>)}
-                            </div>
+                                    ? (<> 
+                                        <button className="button--addProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}> 
+                                            Rate Now </button> </>)
+                                    : (<> 
+                                        <div className="product__myRating">{myRating.toFixed(1)}</div>
+                                        <button className="button--editProductreview" as={Link} onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}> 
+                                            Edit Rating </button>
+                                        <button className="button--deleteProductreview" as={Link} onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}> 
+                                            Delete Rating </button> </>)}
+                            </article>
                         </section>
 
-                        <section>
-                            <button className="button--viewProductDetail" onClick={onOpen}> ℹ︎ </button>
-                            {/* <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </button> */}
-                        </section>
+                        {/* <section>
+                            <button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </button>
+                        </section> */}
+
                     </article>
                     <br></br>
                 </>)
@@ -149,19 +151,6 @@ export const ProductList = ({ props }) => {
                 {products !== []
                 ? renderList(arrayOfProducts)
                 : ""}
-
-                {/* {open && ( */}
-                    <Modal className="dialog dialog--ProductDetail"
-                        open={open}
-                        onEsc={onClose}
-                        onClickOutside={onClose}
-                        responsive={true}
-                        position="center"
-                    >
-                        <div>Product Details</div>
-                        <button className="button--close" onClick={onClose}>Close</button>
-                    </Modal>
-                {/* )} */}
 
             </div>
         </>

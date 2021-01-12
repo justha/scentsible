@@ -8,7 +8,7 @@ import { RatingProvider } from "./rating/RatingProvider"
 import { ProductProvider } from "./product/ProductProvider"
 import { ProductForm } from "./product/ProductForm"
 import { ProductList } from "./product/ProductList"
-import { ProductDetailModal } from "./product/ProductDetailModal"
+// import { ProductDetail } from "./product/ProductDetail"
 import { ProductreviewProvider } from "./productreview/ProductreviewProvider"
 import { ProductreviewForm } from "./productreview/ProductreviewForm"
 import { ProductreviewList } from "./productreview/ProductreviewList"
@@ -43,9 +43,9 @@ export const ApplicationViews = (props) => {
                                             render={(props) => <ProductForm {...props} />}
                                         />
                                         
-                                        <Route path="/products/:productId(\d+)"
-                                            render={(props) => <ProductDetailModal {...props} />}
-                                        />
+                                        {/* <Route path="/products/:productId(\d+)"
+                                            render={(props) => <ProductDetail {...props} />}
+                                        /> */}
                                         
                                         <Route exact path="/productreviews" 
                                             render={(props) => <ProductreviewList {...props} />}
@@ -65,23 +65,6 @@ export const ApplicationViews = (props) => {
                         </BrandProvider>
                 </ProductProvider>
             </ProductreviewProvider>
-
-
-            {/* <ProductreviewProvider>
-                <ProductProvider>
-                    <RatingProvider>
-
-                        <Route exact path="/productreviews" 
-                            render={(props) => <ProductreviewList {...props} />}
-                        />
-                        
-                        <Route exact path="/productreviews/create/:productId(\d+)" 
-                            render={(props) => <ProductreviewForm {...props} />}
-                        />                        
-                        
-                    </RatingProvider>
-                </ProductProvider>                
-            </ProductreviewProvider> */}
 
         </>
     )
