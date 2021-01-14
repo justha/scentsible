@@ -6,6 +6,9 @@ import { BrandContext } from "../brand/BrandProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
 import "./Productreview.css"
+import Button from '@material-ui/core/Button'
+import SaveIcon from '@material-ui/icons/Save'
+
 
 
 export const ProductreviewForm = (props) => {
@@ -91,7 +94,7 @@ export const ProductreviewForm = (props) => {
             {editMode 
             ? (
                 <div>                    
-                <button 
+                <Button 
                     className="button--addProductreview"
                     type="submit"
                     onClick={clickEvent => {
@@ -107,14 +110,18 @@ export const ProductreviewForm = (props) => {
                         updateProductreview(revisedProductreview)  // Sends PUT request to API
                         .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                     }}
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    startIcon={<SaveIcon />}
                 >
                 Update
-                </button>
+                </Button>
             </div>
             )
             : (
                 <div>                    
-                    <button 
+                    <Button 
                         className="button--addProductreview"
                         type="submit"
                         onClick={clickEvent => {
@@ -129,9 +136,13 @@ export const ProductreviewForm = (props) => {
                             addProductreview(newProductreview)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
+                        variant="contained"
+                        color="primary"
+                        size="medium"
+                        startIcon={<SaveIcon />}
                     >
                     Save
-                    </button>
+                    </Button>
                 </div>
             )
             }

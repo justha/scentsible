@@ -36,7 +36,7 @@ export const Login = (props) => {
     existingUserCheck().then((exists) => {
       if (exists.valid) {
         localStorage.setItem("scentsible_user_id", exists.token);
-        props.history.push("/home");
+        props.history.push("/products");
       } else if (exists.valid != true) {
         setShow(true);
       } else if (!exists) {
@@ -73,7 +73,7 @@ export const Login = (props) => {
 
 
       <div direction="column" alignSelf="center">
-        <h1>scentsible</h1>
+        <h1>🦨 scentsible</h1>
         {/* <h1>Sign In</h1> */}
         
         <form className="form--login" onSubmit={handleLogin}>

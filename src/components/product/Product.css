@@ -1,12 +1,139 @@
+/* index.html */
+main {
+    padding: .5rem 3rem .5rem 3rem;
+}
+
+/* Form ****** */
 .form--product,
 .button--createProduct {
     text-align: center;
 }
 
-.form--product > fieldset {
+.form--product > fieldset, 
+.button--viewProductDetail {
     border: none;
 }
 
-.container__ratings {
+
+/* Products Header */
+.products__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title {
+    padding: 0 2rem 0 0;
+}
+
+
+/* Product Card ******* */
+.container__card {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: whitesmoke;
+    padding: 2rem;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product__text {
+    width: 50%;
+}
+
+.product__image {
+    width: 20%;
+}
+
+.product__imgURL {
+    width: 110px;
+}
+
+.product__buttons {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+
+/* Product Details *******  */
+.product__brand {
+    font-weight: bold;
+    font-size: large;
+}
+
+.product__name {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.product__family,
+.product__group {
+    font-size: smaller;
+}
+
+
+
+/* Ratings *******  */
+.container__ratingAll {
+    display: flex;
+    flex-direction: row;
     font-size: small;
 }
+
+.container__ratingAvg, 
+.container__ratingMy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 2rem 0 0;
+}
+
+.container__rating {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.rating__title {
+    font-weight: bold;
+    padding: 0 .25rem 0 0;
+}
+
+.product__avgRating, 
+.product__myRating {
+    text-align: right;
+}
+
+
+/* Filters */
+.container--filterGroup {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+}
+
+.container--filterSet {
+    padding: 0 5rem 0 0;
+}
+
+.filter__title {
+    font-weight: bold;
+    /* color: #3f51b5; */
+}
+
+.button--filterGroup, 
+.button--filterFamily {
+    color: #3f51b5;
+    border-color: #3f51b5;
+    background: none;
+    border-right: .5px dotted;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+} 
