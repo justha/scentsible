@@ -105,11 +105,11 @@ export const ProductList = ({ props }) => {
                                     className="product__imgURL" 
                                     src={
                                         product.group_id === 1
-                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451815/scentsible/haircare_lus5zz.png"
+                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690729/scentsible/hairdryer_outline_iconixar_ytovm0.png"
                                         : (product.group_id === 2
-                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451820/scentsible/skincare_hg5tb0.png"
+                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690741/scentsible/skincare_outline_iconixar_afwtte.png"
                                             : (product.group_id === 3
-                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451828/scentsible/makeup_ta7kln.png"
+                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690748/scentsible/makeup_outline_iconixar_upirkv.png"
                                                 : ""
                                             )
                                         )
