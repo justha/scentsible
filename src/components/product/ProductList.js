@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef} from "react"
+import Modal from "react-modal"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
@@ -22,8 +23,12 @@ export const ProductList = ({ props }) => {
     const { groups, getGroups } = useContext(GroupContext)
     
     const history = useHistory()
-    const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
+    const [ arrayOfProducts, setArrayOfProducts ] = useState([])
+    const [ isOpen, setIsOpen ] = useState(false)  //for Modal
 
+    const openModal = () => {
+        setIsOpen(true)
+    }
 
     useEffect(() => {
         getProducts()
@@ -200,8 +205,12 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         {/* <section>
-                            <Button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </Button>
-                        </section> */}
+                            <IconButton className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </IconButton>
+                        </section>
+ */}
+                        <section>
+                            <IconButton className="button--viewProductDetail" onClick={openModal}> ℹ︎ </IconButton>
+                        </section>
 
                     </article>
                     <br></br>
@@ -247,6 +256,10 @@ export const ProductList = ({ props }) => {
                 : ""}
 
             </main>
+
+            <footer>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </footer>
         </>
     )
 }
