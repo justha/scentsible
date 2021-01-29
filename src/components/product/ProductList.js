@@ -8,6 +8,7 @@ import { GroupContext } from "../group/GroupProvider"
 // import { ProductDetail } from "./ProductDetail"
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' 
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
@@ -206,11 +207,13 @@ export const ProductList = ({ props }) => {
 
                         {/* <section>
                             <IconButton className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </IconButton>
-                        </section>
- */}
-                        <section>
-                            <IconButton className="button--viewProductDetail" onClick={openModal}> ℹ︎ </IconButton>
-                        </section>
+                        </section> */}
+
+                        {/* <section>
+                            <IconButton className="button--viewProductDetail" onClick={openModal}> ℹ
+                                <InfoOutlinedIcon /> 
+                            </IconButton>
+                        </section> */}
 
                     </article>
                     <br></br>
