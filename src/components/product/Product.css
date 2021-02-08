@@ -3,6 +3,11 @@ main {
     padding: .5rem 3rem .5rem 3rem;
 }
 
+
+footer {
+    font-size: small;
+}
+
 /* Form ****** */
 .form--product,
 .button--createProduct {

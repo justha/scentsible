@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef} from "react"
+import Modal from "react-modal"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
@@ -7,6 +8,7 @@ import { GroupContext } from "../group/GroupProvider"
 // import { ProductDetail } from "./ProductDetail"
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' 
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
@@ -22,8 +24,12 @@ export const ProductList = ({ props }) => {
     const { groups, getGroups } = useContext(GroupContext)
     
     const history = useHistory()
-    const [ arrayOfProducts, setArrayOfProducts ] = useState([]) 
+    const [ arrayOfProducts, setArrayOfProducts ] = useState([])
+    const [ isOpen, setIsOpen ] = useState(false)  //for Modal
 
+    const openModal = () => {
+        setIsOpen(true)
+    }
 
     useEffect(() => {
         getProducts()
@@ -105,11 +111,11 @@ export const ProductList = ({ props }) => {
                                     className="product__imgURL" 
                                     src={
                                         product.group_id === 1
-                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451815/scentsible/haircare_lus5zz.png"
+                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690729/scentsible/hairdryer_outline_iconixar_ytovm0.png"
                                         : (product.group_id === 2
-                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451820/scentsible/skincare_hg5tb0.png"
+                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690741/scentsible/skincare_outline_iconixar_afwtte.png"
                                             : (product.group_id === 3
-                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1610451828/scentsible/makeup_ta7kln.png"
+                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690748/scentsible/makeup_outline_iconixar_upirkv.png"
                                                 : ""
                                             )
                                         )
@@ -200,7 +206,13 @@ export const ProductList = ({ props }) => {
                         </section>
 
                         {/* <section>
-                            <Button className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </Button>
+                            <IconButton className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </IconButton>
+                        </section> */}
+
+                        {/* <section>
+                            <IconButton className="button--viewProductDetail" onClick={openModal}> ℹ
+                                <InfoOutlinedIcon /> 
+                            </IconButton>
                         </section> */}
 
                     </article>
@@ -247,6 +259,10 @@ export const ProductList = ({ props }) => {
                 : ""}
 
             </main>
+
+            <footer>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </footer>
         </>
     )
 }
