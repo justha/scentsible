@@ -12,7 +12,6 @@ import SaveIcon from '@material-ui/icons/Save'
 
 
 export const ProductreviewForm = (props) => {
-    const { product, getProductById } = useContext(ProductContext)
     const { ratings, getRatings } = useContext(RatingContext)
     const { addProductreview, getProductreviewById, updateProductreview } = useContext(ProductreviewContext) 
 
@@ -33,7 +32,6 @@ export const ProductreviewForm = (props) => {
     //Gets the following on initialization, so that product details are presented to the user
     useEffect(() => {
         getRatings()
-        getProductById(productId)
         
         if (editMode) {
             getProductreviewById(productreviewId).then(setProdreviewObj)
@@ -57,14 +55,6 @@ export const ProductreviewForm = (props) => {
         <form className="form--productreview">
             <h2 className="productreviewForm__title">{editMode ? "Edit Your Product Review" : "Review This Product"}</h2>
 
-            <section key={`product--${product.id}`} className="product">
-                {/* <div className="product__brand">{product.brand.name}</div>
-                <div className="product__name">{product.name}</div>
-                <div className="product__family">{product.family.name}</div>
-                <div className="product__group">{product.group.name}</div> */}
-            </section>
-
-
             <fieldset>
                 <div className="form-group">
                     {/* <label htmlFor="rating_id">Scent Strength Rating: </label> */}
@@ -73,7 +63,7 @@ export const ProductreviewForm = (props) => {
                         onChange={handleControlledInputChange}>
                         <option value="0">Scent Strength</option>
                             {ratings.map(rating => {
-                                return <option value={rating.id}>{rating.name}</option>
+                                return <option value={rating.id}>{rating.weight}-{rating.name}</option>
                             })}
                     </select>
                 </div>
@@ -95,7 +85,7 @@ export const ProductreviewForm = (props) => {
             ? (
                 <div>                    
                 <Button 
-                    className="button--addProductreview"
+                    className="button--updateProductreview"
                     type="submit"
                     onClick={clickEvent => {
                         clickEvent.preventDefault()  // Prevents form from being submitted
@@ -105,7 +95,8 @@ export const ProductreviewForm = (props) => {
                             review_date: prodreviewObj.review_date,
                             review: prodreviewObj.review,
                             rating_id: parseInt(prodreviewObj.rating_id),
-                            product_id: productId}
+                            product_id: parseInt(prodreviewObj.product_id)
+                        }
                         
                         updateProductreview(revisedProductreview)  // Sends PUT request to API
                         .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
@@ -131,7 +122,8 @@ export const ProductreviewForm = (props) => {
                                 review_date: jsonDate,
                                 review: prodreviewObj.review,
                                 rating_id: parseInt(prodreviewObj.rating_id),
-                                product_id: productId}
+                                product_id: productId
+                            }
                                                        
                             addProductreview(newProductreview)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
