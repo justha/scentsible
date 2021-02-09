@@ -4,9 +4,9 @@
     text-align: center;
 }
 
-.form--productreview > fieldset {
-    border: none;
-}
+.form--productreview > fieldset {}
+
+.form--radiobuttons {}
 
 
 
