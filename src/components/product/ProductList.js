@@ -11,8 +11,9 @@ import IconButton from '@material-ui/core/IconButton'
 import ListIcon from '@material-ui/icons/List'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' 
 import AddIcon from '@material-ui/icons/Add'
-import EditIcon from '@material-ui/icons/Edit' 
-import HighlightOffIcon from '@material-ui/icons/HighlightOff' //delete icon
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline' // delete icon (trash can)
+import HighlightOffIcon from '@material-ui/icons/HighlightOff' //delete icon ("x")
 import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined' //star icon
 
 export const ProductList = ({ props }) => {
@@ -124,35 +125,31 @@ export const ProductList = ({ props }) => {
                                                 color="primary"
                                                 size="small"
                                                 startIcon={<AddIcon />}
-                                            > Rate Now 
+                                            > Rate 
                                             </Button>)
-                                        : (<div className="product__ratingValue">{myRating.toFixed(1)}</div>)
+                                        : (
+                                            <a 
+                                                href="" 
+                                                onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}} 
+                                            >
+                                                <div className="product__ratingValue">{myRating.toFixed(1)}</div>
+                                            </a>
+                                        )
                                     }
 
                                     {product.currentuser_productreview_id === null
                                     ? ""
-                                    : (<> 
-                                        <IconButton 
-                                            className="button--EditRating" 
-                                            as={Link} 
-                                            onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}                             
-                                            // color="primary" 
-                                            size="small"
-                                        > 
-                                            {/* Edit Rating  */}
-                                            <EditIcon />
-                                        </IconButton>
-                                        <IconButton 
+                                    : ( 
+                                        <Button 
                                             className="button--DeleteRating" 
                                             as={Link} 
                                             onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
                                             // color="primary" 
                                             size="small"
+                                            startIcon={<DeleteOutlineIcon />}
                                         > 
-                                            {/* Delete Rating  */}
-                                            <HighlightOffIcon />
-                                        </IconButton> 
-                                        </>)
+                                        </Button> 
+                                        )
                                     }
 
                                 </article>
@@ -182,7 +179,7 @@ export const ProductList = ({ props }) => {
                         <div className="container__productButtons">                                
                             {product.currentuser_created === true
                             ? (<>
-                                    <Button 
+                                    {/* <Button 
                                         className="button--listProductButtons" 
                                         as={Link} 
                                         onClick={() => {}}
@@ -191,13 +188,13 @@ export const ProductList = ({ props }) => {
                                         size="small" 
                                         startIcon={<ListIcon />}
                                         > 
-                                    </Button>
+                                    </Button> */}
                                     <Button 
                                         className="button--editProduct" 
                                         as={Link} 
                                         onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}
                                         variant="text"
-                                        color="primary"
+                                        // color="primary"
                                         size="small" 
                                         startIcon={<EditIcon />}
                                         > 
@@ -208,7 +205,7 @@ export const ProductList = ({ props }) => {
                                         as={Link} 
                                         onClick={() => {deleteProduct(`${product.id}`)}}
                                         variant="text" 
-                                        color="primary"
+                                        // color="primary"
                                         size="small" 
                                         startIcon={<HighlightOffIcon />}
                                         > 
