@@ -1,8 +1,40 @@
+/* Product Reviews *******  */
 .form--productreview,
 .button--createProductreview {
     text-align: center;
 }
 
-.form--productreview > fieldset {
-    border: none;
+.form--productreview > fieldset {}
+
+.form--radiobuttons {}
+
+
+
+/* Ratings *******  */
+.container__ratings {
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+    white-space: nowrap;
 }
+
+.container__avgRating, 
+.container__myRating {
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    padding: 0 4rem 0 0;
+    align-items: center;
+}
+
+.product__ratingTitle {
+    font-weight: bold;
+    padding: 0 .5rem 0 0;
+}    
+
+.product__ratingValue {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 0 0;
+    white-space: nowrap;
+}    

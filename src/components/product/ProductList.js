@@ -8,12 +8,11 @@ import { GroupContext } from "../group/GroupProvider"
 // import { ProductDetail } from "./ProductDetail"
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
+import ListIcon from '@material-ui/icons/List'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' 
 import AddIcon from '@material-ui/icons/Add'
-import EditIcon from '@material-ui/icons/Edit'
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
-import DeleteIcon from '@material-ui/icons/Delete'
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
+import EditIcon from '@material-ui/icons/Edit' 
+import HighlightOffIcon from '@material-ui/icons/HighlightOff' //delete icon
 import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined' //star icon
 
 export const ProductList = ({ props }) => {
@@ -52,11 +51,11 @@ export const ProductList = ({ props }) => {
     const renderFilters = () => {
         return (
             <>
-                <section className="container--filterGroup">                    
+                <section className="container--productFilters">                    
                     <article className="container--filterSet"> 
-                        <h3 className="filter__title">View by Product Group</h3>
-                        <button className="button--filterGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                        {groups.map(group => {return <button className="button--filterGroup" as={Link} value={group.id} 
+                        <h3 className="filter__title">View by Product Type</h3>
+                        <button className="button--filterProductGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                        {groups.map(group => {return <button className="button--filterProductGroup" as={Link} value={group.id} 
                             onClick={(event) => {
                                 const groupId = parseInt(event.target.value)
                                 getProductsByGroup(groupId).then(setArrayOfProducts)}}
@@ -64,9 +63,9 @@ export const ProductList = ({ props }) => {
                     </article>
 
                     <article className="container--filterSet"> 
-                        <h3 className="filter__title">View by Scent</h3>
-                        <button className="button--filterFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                        {families.map(familiy => {return <button className="button--filterFamily" as={Link} value={familiy.id} 
+                        <h3 className="filter__title">View by Scent Type</h3>
+                        <button className="button--filterScentFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+                        {families.map(familiy => {return <button className="button--filterScentFamily" as={Link} value={familiy.id} 
                             onClick={(event) => {
                                 const familyId = parseInt(event.target.value)
                                 getProductsByFamily(familyId).then(setArrayOfProducts)}}
@@ -91,49 +90,115 @@ export const ProductList = ({ props }) => {
                 let avgRating = ""
                 ratingCount !== 0
                 ? (avgRating = (ratingSum/ratingCount).toFixed(1))
-                : (avgRating = " Not Rated Yet ")
+                : (avgRating = " Not Rated ")
 
                 const myRating = parseInt(product.currentuser_rating)
 
                 return (<>
-                    <article className="container__card">                        
-                        <section key={`product--${product.id}`} className="product">
+                    <div className="container__card">    
 
-                            <div className="product__text">                                
+                        <div className="container__productInfo" key={`product--${product.id}`}>
+
+                            <section className="container__productText">                                
                                 <div className="product__brand">{product.brand.name}</div>
                                 <div className="product__name">{product.name}</div>
                                 <div className="product__group">{product.group.name}</div>
                                 <div className="product__family">{product.family.name}</div>
-                            </div>
+                            </section>
 
-                            <div className="product__image">                                
-                                <img 
-                                    className="product__imgURL" 
-                                    src={
-                                        product.group_id === 1
-                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690729/scentsible/hairdryer_outline_iconixar_ytovm0.png"
-                                        : (product.group_id === 2
-                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690741/scentsible/skincare_outline_iconixar_afwtte.png"
-                                            : (product.group_id === 3
-                                                ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690748/scentsible/makeup_outline_iconixar_upirkv.png"
-                                                : ""
-                                            )
-                                        )
+                            <br></br>
+
+                            <section className="container__ratings">      
+                                <article className="container__avgRating">
+                                    <div className="product__ratingTitle"> Avg Rating: </div>
+                                    <div className="product__ratingValue"> {avgRating} </div>
+                                </article>
+
+                                <article className="container__myRating">
+                                    <div className="product__ratingTitle"> My Rating: </div> 
+                                    {product.currentuser_productreview_id === null
+                                        ? (<Button 
+                                                className="button--addProductreview" 
+                                                as={Link} 
+                                                onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
+                                                color="primary"
+                                                size="small"
+                                                startIcon={<AddIcon />}
+                                            > Rate Now 
+                                            </Button>)
+                                        : (<div className="product__ratingValue">{myRating.toFixed(1)}</div>)
                                     }
-                                    alt="product">                            
-                                </img>
-                            </div>
 
-                            <div className="product__buttons">                                
-                                {product.currentuser_created === true
-                                ? (<>
+                                    {product.currentuser_productreview_id === null
+                                    ? ""
+                                    : (<> 
+                                        <IconButton 
+                                            className="button--EditRating" 
+                                            as={Link} 
+                                            onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}                             
+                                            // color="primary" 
+                                            size="small"
+                                        > 
+                                            {/* Edit Rating  */}
+                                            <EditIcon />
+                                        </IconButton>
+                                        <IconButton 
+                                            className="button--DeleteRating" 
+                                            as={Link} 
+                                            onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
+                                            // color="primary" 
+                                            size="small"
+                                        > 
+                                            {/* Delete Rating  */}
+                                            <HighlightOffIcon />
+                                        </IconButton> 
+                                        </>)
+                                    }
+
+                                </article>
+                            </section>
+
+
+                        </div>
+
+                        <div className="container__productImage">                                
+                            <img 
+                                className="product__imgURL" 
+                                src={
+                                    product.group_id === 1
+                                    ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690729/scentsible/hairdryer_outline_iconixar_ytovm0.png"
+                                    : (product.group_id === 2
+                                        ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690741/scentsible/skincare_outline_iconixar_afwtte.png"
+                                        : (product.group_id === 3
+                                            ? "https://res.cloudinary.com/djxxamywv/image/upload/v1611690748/scentsible/makeup_outline_iconixar_upirkv.png"
+                                            : ""
+                                            )    
+                                        )                
+                                    }
+                                alt="product">                            
+                            </img>
+                        </div>
+
+                        <div className="container__productButtons">                                
+                            {product.currentuser_created === true
+                            ? (<>
+                                    <Button 
+                                        className="button--listProductButtons" 
+                                        as={Link} 
+                                        onClick={() => {}}
+                                        variant="text"
+                                        color="primary"
+                                        size="small" 
+                                        startIcon={<ListIcon />}
+                                        > 
+                                    </Button>
                                     <Button 
                                         className="button--editProduct" 
                                         as={Link} 
                                         onClick={() => {history.push({ pathname: `/products/edit/${product.id}` })}}
                                         variant="text"
+                                        color="primary"
                                         size="small" 
-                                        // color="primary"
                                         startIcon={<EditIcon />}
                                         > 
                                         Edit Product 
@@ -143,67 +208,16 @@ export const ProductList = ({ props }) => {
                                         as={Link} 
                                         onClick={() => {deleteProduct(`${product.id}`)}}
                                         variant="text" 
+                                        color="primary"
                                         size="small" 
-                                        // color="primary"
-                                        startIcon={<DeleteIcon />}
+                                        startIcon={<HighlightOffIcon />}
                                         > 
                                         Delete Product 
-                                    </Button></>
-                                    )
-                                : ""}
-                            </div>
-
-                        </section>
-
-                        <br></br>
-
-                        <section className="container__ratingAll">      
-                            <article className="container__ratingAvg">
-                                <div className="container__rating">                                    
-                                    <div className="rating__title"> Avg Rating: </div>
-                                    <div className="product__avgRating"> {avgRating} </div>
-                                </div>
-                            </article>
-
-                            <article className="container__ratingMy">
-                                <div className="rating__title"> My Rating: </div> 
-                                {product.currentuser_productreview_id === null
-                                    ? (<Button 
-                                            className="button--addProductreview" 
-                                            as={Link} 
-                                            onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
-                                            color="primary"
-                                            size="small"
-                                            startIcon={<AddIcon />}
-                                        > Rate Now 
-                                        </Button>)
-                                    : (<div className="product__myRating">{myRating.toFixed(1)}</div>)
-                                }
-
-                                {product.currentuser_productreview_id === null
-                                ? ""
-                                : (<> 
-                                    {/* <IconButton 
-                                        className="button--EditRating" 
-                                        as={Link} 
-                                        onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}}                             
-                                    > 
-                                        Edit Rating 
-                                        <EditOutlinedIcon />
-                                    </IconButton> */}
-                                    <IconButton 
-                                        className="button--DeleteRating" 
-                                        as={Link} 
-                                        onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
-                                    > 
-                                        {/* Delete Rating  */}
-                                        <DeleteOutlineOutlinedIcon />
-                                    </IconButton> 
-                                    </>)
-                                }
-
-                            </article>
-                        </section>
+                                    </Button>
+                                </>
+                                )
+                            : ""}
+                        </div>
 
                         {/* <section>
                             <IconButton className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </IconButton>
@@ -215,7 +229,7 @@ export const ProductList = ({ props }) => {
                             </IconButton>
                         </section> */}
 
-                    </article>
+                    </div>
                     <br></br>
                 </>)
             })
@@ -261,9 +275,8 @@ export const ProductList = ({ props }) => {
             </main>
 
             <footer>
-                <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" target="_blank" title="iconixar">iconixar </a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">www.flaticon.com</a></div>
             </footer>
         </>
     )
 }
-  
