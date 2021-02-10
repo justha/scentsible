@@ -1,0 +1,27 @@
+/* Filters */
+.container--productFilters {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding: 0 2rem 0 2rem;
+}
+
+.container--filterSet {
+    padding: 0 5rem 0 0;
+}
+
+.filter__title {
+    font-weight: bold;
+}
+
+.button--filterProductGroup, 
+.button--filterScentFamily,
+.button--viewAll {
+    color: #3f51b5;
+    border-color: #3f51b5;
+    background: none;
+    border-right: .5px dotted;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+} 

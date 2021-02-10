@@ -5,11 +5,10 @@ import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
-// import { ProductDetail } from "./ProductDetail"
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import ListIcon from '@material-ui/icons/List'
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' 
+import ListIcon from '@material-ui/icons/List' // list icon
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' // info icon
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline' // delete icon (trash can)
@@ -20,8 +19,8 @@ export const ProductList = ({ props }) => {
     
     const { products, getProducts, deleteProduct, getProductsByGroup, getProductsByFamily } = useContext(ProductContext)
     const { productreviews, getProductreviews, deleteProductreview } = useContext(ProductreviewContext)
-    const { families, getFamilies } = useContext(FamilyContext)
-    const { groups, getGroups } = useContext(GroupContext)
+    const { families, getFamilies, selectedFamilyId } = useContext(FamilyContext)
+    const { groups, getGroups, selectedGroupId } = useContext(GroupContext)
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([])
@@ -38,6 +37,17 @@ export const ProductList = ({ props }) => {
         getProductreviews()
     }, [])
     
+    
+    useEffect(() => {
+        console.log(selectedGroupId)
+    }, [selectedGroupId])
+
+    useEffect(() => {
+        console.log(selectedFamilyId)
+    }, [selectedFamilyId])
+
+
+
     useEffect(() => {
         setArrayOfProducts(products);
     }, [products])
@@ -49,33 +59,33 @@ export const ProductList = ({ props }) => {
     }, [productreviews])
 
    
-    const renderFilters = () => {
-        return (
-            <>
-                <section className="container--productFilters">                    
-                    <article className="container--filterSet"> 
-                        <h3 className="filter__title">View by Product Type</h3>
-                        <button className="button--filterProductGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                        {groups.map(group => {return <button className="button--filterProductGroup" as={Link} value={group.id} 
-                            onClick={(event) => {
-                                const groupId = parseInt(event.target.value)
-                                getProductsByGroup(groupId).then(setArrayOfProducts)}}
-                            > {group.name} </button>})}
-                    </article>
+    // const renderFilters = () => {
+    //     return (
+    //         <>
+    //             <section className="container--productFilters">                    
+    //                 <article className="container--filterSet"> 
+    //                     <h3 className="filter__title">View by Product Type</h3>
+    //                     <button className="button--filterProductGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+    //                     {groups.map(group => {return <button className="button--filterProductGroup" as={Link} value={group.id} 
+    //                         onClick={(event) => {
+    //                             const groupId = parseInt(event.target.value)
+    //                             getProductsByGroup(groupId).then(setArrayOfProducts)}}
+    //                         > {group.name} </button>})}
+    //                 </article>
 
-                    <article className="container--filterSet"> 
-                        <h3 className="filter__title">View by Scent Type</h3>
-                        <button className="button--filterScentFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-                        {families.map(familiy => {return <button className="button--filterScentFamily" as={Link} value={familiy.id} 
-                            onClick={(event) => {
-                                const familyId = parseInt(event.target.value)
-                                getProductsByFamily(familyId).then(setArrayOfProducts)}}
-                            > {familiy.name} </button>})}
-                    </article>
-                </section>
-            </>
-        )
-    }
+    //                 <article className="container--filterSet"> 
+    //                     <h3 className="filter__title">View by Scent Type</h3>
+    //                     <button className="button--filterScentFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
+    //                     {families.map(familiy => {return <button className="button--filterScentFamily" as={Link} value={familiy.id} 
+    //                         onClick={(event) => {
+    //                             const familyId = parseInt(event.target.value)
+    //                             getProductsByFamily(familyId).then(setArrayOfProducts)}}
+    //                         > {familiy.name} </button>})}
+    //                 </article>
+    //             </section>
+    //         </>
+    //     )
+    // }
 
     const renderList = (arrayOfProducts) => {
         return (
@@ -117,40 +127,42 @@ export const ProductList = ({ props }) => {
 
                                 <article className="container__myRating">
                                     <div className="product__ratingTitle"> My Rating: </div> 
-                                    {product.currentuser_productreview_id === null
-                                        ? (<Button 
-                                                className="button--addProductreview" 
-                                                as={Link} 
-                                                onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
-                                                color="primary"
-                                                size="small"
-                                                startIcon={<AddIcon />}
-                                            > Rate 
-                                            </Button>)
-                                        : (
-                                            <a 
-                                                href="" 
-                                                onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}} 
-                                            >
-                                                <div className="product__ratingValue">{myRating.toFixed(1)}</div>
-                                            </a>
-                                        )
-                                    }
+                                    <div className="product__ratingValue">                                        
+                                        {product.currentuser_productreview_id === null
+                                            ? (<Button 
+                                                    className="button--addProductreview" 
+                                                    as={Link} 
+                                                    onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
+                                                    color="primary"
+                                                    size="small"
+                                                    startIcon={<AddIcon />}
+                                                > Rate 
+                                                </Button>)
+                                            : (
+                                                <a                                                 
+                                                    href="" 
+                                                    onClick={() => {history.push({ pathname: `/productreviews/edit/${product.currentuser_productreview_id}` })}} 
+                                                >
+                                                    {myRating.toFixed(1)}
+                                                </a>
+                                            )
+                                        }
 
-                                    {product.currentuser_productreview_id === null
-                                    ? ""
-                                    : ( 
-                                        <Button 
-                                            className="button--DeleteRating" 
-                                            as={Link} 
-                                            onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
-                                            // color="primary" 
-                                            size="small"
-                                            startIcon={<DeleteOutlineIcon />}
-                                        > 
-                                        </Button> 
-                                        )
-                                    }
+                                        {product.currentuser_productreview_id === null
+                                        ? ""
+                                        : ( 
+                                            <Button 
+                                                className="button--DeleteRating" 
+                                                as={Link} 
+                                                onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
+                                                // color="primary" 
+                                                size="small"
+                                                startIcon={<DeleteOutlineIcon />}
+                                            > 
+                                            </Button> 
+                                            )
+                                        }
+                                    </div>
 
                                 </article>
                             </section>
@@ -179,16 +191,6 @@ export const ProductList = ({ props }) => {
                         <div className="container__productButtons">                                
                             {product.currentuser_created === true
                             ? (<>
-                                    {/* <Button 
-                                        className="button--listProductButtons" 
-                                        as={Link} 
-                                        onClick={() => {}}
-                                        variant="text"
-                                        color="primary"
-                                        size="small" 
-                                        startIcon={<ListIcon />}
-                                        > 
-                                    </Button> */}
                                     <Button 
                                         className="button--editProduct" 
                                         as={Link} 
@@ -238,9 +240,9 @@ export const ProductList = ({ props }) => {
         <>
             <main>
 
-                {products !== []
+                {/* {products !== []
                 ? renderFilters()
-                : ""}
+                : ""} */}
 
                 <br></br>
 
