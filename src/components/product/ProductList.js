@@ -38,27 +38,39 @@ export const ProductList = ({ props }) => {
     }, [])
     
     
+    // Upon changes to products, gets products and re-sets array of products to refresh ProductList
     useEffect(() => {
-        console.log(selectedGroupId)
+        setArrayOfProducts(products)
+    }, [products])
+    
+    // Upon changes to productreviews, gets products and re-sets array of products to refresh ProductList
+    useEffect(() => {
+        getProducts()
+        setArrayOfProducts(products)
+    }, [productreviews])
+    
+
+    // When a user selects a filter option, resets arrayOfProducts to refresh ProductList 
+    const subset = 
+        selectedGroupId === 0 && selectedFamilyId === 0
+        ? products 
+        : selectedGroupId !== 0 && selectedFamilyId === 0
+            ? products.filter(p => p.group_id === selectedGroupId)
+            : selectedGroupId === 0 && selectedFamilyId !== 0
+                ? products.filter(p => p.family_id === selectedFamilyId)
+                : products.filter(p => p.group_id === selectedGroupId && p.family_id === selectedFamilyId)
+
+    useEffect(() => {
+        setArrayOfProducts(subset)
     }, [selectedGroupId])
 
     useEffect(() => {
-        console.log(selectedFamilyId)
+        setArrayOfProducts(subset)
     }, [selectedFamilyId])
 
 
 
-    useEffect(() => {
-        setArrayOfProducts(products);
-    }, [products])
     
-    //Upon changes to productreviews, gets products and re-sets array of products to refresh ProductList
-    useEffect(() => {
-        getProducts()
-        setArrayOfProducts(products);
-    }, [productreviews])
-
-   
     // const renderFilters = () => {
     //     return (
     //         <>
