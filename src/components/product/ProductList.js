@@ -6,9 +6,6 @@ import { ProductreviewContext } from "../productreview/ProductreviewProvider"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
 import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import ListIcon from '@material-ui/icons/List' // list icon
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined' // info icon
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline' // delete icon (trash can)
@@ -71,34 +68,6 @@ export const ProductList = ({ props }) => {
 
 
     
-    // const renderFilters = () => {
-    //     return (
-    //         <>
-    //             <section className="container--productFilters">                    
-    //                 <article className="container--filterSet"> 
-    //                     <h3 className="filter__title">View by Product Type</h3>
-    //                     <button className="button--filterProductGroup" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-    //                     {groups.map(group => {return <button className="button--filterProductGroup" as={Link} value={group.id} 
-    //                         onClick={(event) => {
-    //                             const groupId = parseInt(event.target.value)
-    //                             getProductsByGroup(groupId).then(setArrayOfProducts)}}
-    //                         > {group.name} </button>})}
-    //                 </article>
-
-    //                 <article className="container--filterSet"> 
-    //                     <h3 className="filter__title">View by Scent Type</h3>
-    //                     <button className="button--filterScentFamily" as={Link} onClick={() => getProducts().then(setArrayOfProducts(products))} > ALL </button>
-    //                     {families.map(familiy => {return <button className="button--filterScentFamily" as={Link} value={familiy.id} 
-    //                         onClick={(event) => {
-    //                             const familyId = parseInt(event.target.value)
-    //                             getProductsByFamily(familyId).then(setArrayOfProducts)}}
-    //                         > {familiy.name} </button>})}
-    //                 </article>
-    //             </section>
-    //         </>
-    //     )
-    // }
-
     const renderList = (arrayOfProducts) => {
         return (
             arrayOfProducts.map(product => {
@@ -145,7 +114,7 @@ export const ProductList = ({ props }) => {
                                                     className="button--addProductreview" 
                                                     as={Link} 
                                                     onClick={() => {history.push({ pathname: `/productreviews/create/${product.id}` })}}
-                                                    color="primary"
+                                                    color="secondary"
                                                     size="small"
                                                     startIcon={<AddIcon />}
                                                 > Rate 
@@ -167,7 +136,7 @@ export const ProductList = ({ props }) => {
                                                 className="button--DeleteRating" 
                                                 as={Link} 
                                                 onClick={() => {deleteProductreview(`${product.currentuser_productreview_id}`)}}
-                                                // color="primary" 
+                                                color="primary" 
                                                 size="small"
                                                 startIcon={<DeleteOutlineIcon />}
                                             > 
@@ -230,16 +199,6 @@ export const ProductList = ({ props }) => {
                             : ""}
                         </div>
 
-                        {/* <section>
-                            <IconButton className="button--viewProductDetail" onClick={() => {history.push({ pathname: `/products/${product.id}` })}}> ℹ︎ </IconButton>
-                        </section> */}
-
-                        {/* <section>
-                            <IconButton className="button--viewProductDetail" onClick={openModal}> ℹ
-                                <InfoOutlinedIcon /> 
-                            </IconButton>
-                        </section> */}
-
                     </div>
                     <br></br>
                 </>)
@@ -251,13 +210,6 @@ export const ProductList = ({ props }) => {
     return (
         <>
             <main>
-
-                {/* {products !== []
-                ? renderFilters()
-                : ""} */}
-
-                <br></br>
-
                 <header className="products__header"> 
                     <h2 className="title">Products</h2> 
 
@@ -282,11 +234,10 @@ export const ProductList = ({ props }) => {
                 {products !== []
                 ? renderList(arrayOfProducts)
                 : ""}
-
             </main>
 
             <footer>
-                <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" target="_blank" title="iconixar">iconixar </a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">www.flaticon.com</a></div>
+                <div className="imageAttribution">Icons made by <a href="https://www.flaticon.com/authors/iconixar" target="_blank" title="iconixar">iconixar </a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">www.flaticon.com</a></div>
             </footer>
         </>
     )

@@ -41,8 +41,9 @@
 }    
 
 .product__ratingValue > a, 
+.product__ratingValue > a:link, 
 .product__ratingValue > a:visited, 
 .product__ratingValue > a:hover, 
 .product__ratingValue > a:active {
-    color: inherit;
+    color: #3f51b5;
 }

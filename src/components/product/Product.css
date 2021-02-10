@@ -96,3 +96,12 @@ footer {
     font-size: smaller;
 }
 
+
+/* Footer icon image attribution *******  */
+.imageAttribution > a, 
+.imageAttribution > a:link, 
+.imageAttribution > a:visited, 
+.imageAttribution > a:hover, 
+.imageAttribution > a:active {
+    color: inherit;
+}
