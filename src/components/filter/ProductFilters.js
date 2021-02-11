@@ -25,7 +25,7 @@ export const ProductFilters = () => {
             <section className="container--productFilters"> 
  
                 <article className="container--filterSet">                    
-                        <h3 className="filter__title">View All</h3>
+                        <h3 className="filter__title">View</h3>
                         <button 
                             className="button--viewAll" 
                             as={Link} 
@@ -44,7 +44,7 @@ export const ProductFilters = () => {
                 </article>
 
                 <article className="container--filterSet"> 
-                    <h3 className="filter__title">View by Product Type</h3>                     
+                    <h3 className="filter__title">by Product Type</h3>                     
                     
                     {groups.map(group => {
                         return (                            
@@ -79,7 +79,7 @@ export const ProductFilters = () => {
                 </article>
 
                 <article className="container--filterSet"> 
-                    <h3 className="filter__title">View by Scent Type</h3>
+                    <h3 className="filter__title">by Scent Type</h3>
                     
                     {families.map(family => {
                         return (
