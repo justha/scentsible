@@ -11,7 +11,7 @@ export const ProductFilters = () => {
     const { families, getFamilies, selectedFamilyId, setSelectedFamilyId } = useContext(FamilyContext)
     const { groups, getGroups, selectedGroupId, setSelectedGroupId } = useContext(GroupContext)
 
-    const filterOn = {background: '#d1d9ff'}
+    const filterOn = {'font-weight': 'bold', 'text-decoration': 'underline wavy'}
     const filterOff = {}
 
     useEffect(() => {
@@ -67,6 +67,15 @@ export const ProductFilters = () => {
                         )
                     })}
                     
+                    <button 
+                        className="button--clearFilter" 
+                        as={Link} 
+                        onClick={() => {setSelectedGroupId(0)}} 
+                        disabled={(selectedGroupId === 0) ? true : ""}
+                        > 
+                        Clear Filter
+                    </button>
+
                 </article>
 
                 <article className="container--filterSet"> 
@@ -75,23 +84,32 @@ export const ProductFilters = () => {
                     {families.map(family => {
                         return (
                             <button 
-                                className="button--filterScentFamily" 
-                                as={Link} 
-                                value={family.id} 
-                                onClick={(event) => {
-                                    const familyId = parseInt(event.target.value)
-                                    setSelectedFamilyId(familyId)
-                                    }}
-                                style={
-                                    selectedFamilyId === family.id 
-                                    ? filterOn
-                                    : filterOff
-                                }
+                            className="button--filterScentFamily" 
+                            as={Link} 
+                            value={family.id} 
+                            onClick={(event) => {
+                                const familyId = parseInt(event.target.value)
+                                setSelectedFamilyId(familyId)
+                            }}
+                            style={
+                                selectedFamilyId === family.id 
+                                ? filterOn
+                                : filterOff
+                            }
                             > 
                                 {family.name} 
                             </button>
                             )
-                    })}
+                        })}
+
+                    <button 
+                        className="button--clearFilter" 
+                        as={Link} 
+                        onClick={() => {setSelectedFamilyId(0)}}
+                        disabled={(selectedFamilyId === 0) ? true : ""}
+                        > 
+                        Clear Filter
+                    </button>
 
                 </article>
 

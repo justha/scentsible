@@ -72,7 +72,7 @@ footer {
 .container__productButtons {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-content: flex-start;
     width: 20%;
     white-space: nowrap;
