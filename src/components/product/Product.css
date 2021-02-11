@@ -72,7 +72,7 @@ footer {
 .container__productButtons {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-content: flex-start;
     width: 20%;
     white-space: nowrap;
@@ -97,30 +97,11 @@ footer {
 }
 
 
-
-/* Filters */
-.container--productFilters {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    padding: 0 2rem 0 2rem;
+/* Footer icon image attribution *******  */
+.imageAttribution > a, 
+.imageAttribution > a:link, 
+.imageAttribution > a:visited, 
+.imageAttribution > a:hover, 
+.imageAttribution > a:active {
+    color: inherit;
 }
-
-.container--filterSet {
-    padding: 0 5rem 0 0;
-}
-
-.filter__title {
-    font-weight: bold;
-}
-
-.button--filterProductGroup, 
-.button--filterScentFamily {
-    color: #3f51b5;
-    border-color: #3f51b5;
-    background: none;
-    border-right: .5px dotted;
-    border-left: none;
-    border-top: none;
-    border-bottom: none;
-} 

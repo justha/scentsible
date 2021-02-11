@@ -5,6 +5,8 @@ export const GroupContext = React.createContext()
 
 export const GroupProvider = (props) => {
   const [groups, setGroups] = useState([])
+  const [ selectedGroupId, setSelectedGroupId ] = useState(0)
+
 
   const getGroups = () => {
     return fetch("http://localhost:8000/groups", {
@@ -18,7 +20,8 @@ export const GroupProvider = (props) => {
 
   return (
     <GroupContext.Provider value={{
-        groups, getGroups
+        groups, getGroups,
+        selectedGroupId, setSelectedGroupId
       }}
     >
       {props.children}

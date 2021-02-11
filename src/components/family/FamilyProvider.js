@@ -5,6 +5,8 @@ export const FamilyContext = React.createContext()
 
 export const FamilyProvider = (props) => {
   const [families, setFamilies] = useState([])
+  const [ selectedFamilyId, setSelectedFamilyId ] = useState(0)
+
 
   const getFamilies = () => {
     return fetch("http://localhost:8000/families", {
@@ -18,7 +20,8 @@ export const FamilyProvider = (props) => {
 
   return (
     <FamilyContext.Provider value={{
-        families, getFamilies
+        families, getFamilies,
+        selectedFamilyId, setSelectedFamilyId
       }}
     >
       {props.children}

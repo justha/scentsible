@@ -6,9 +6,9 @@ import { GroupProvider } from "./group/GroupProvider"
 import { Homepage } from "./home/Homepage"
 import { RatingProvider } from "./rating/RatingProvider"
 import { ProductProvider } from "./product/ProductProvider"
+import { ProductFilters } from "./filter/ProductFilters"
 import { ProductForm } from "./product/ProductForm"
 import { ProductList } from "./product/ProductList"
-// import { ProductDetail } from "./product/ProductDetail"
 import { ProductreviewProvider } from "./productreview/ProductreviewProvider"
 import { ProductreviewForm } from "./productreview/ProductreviewForm"
 import { ProductreviewList } from "./productreview/ProductreviewList"
@@ -32,7 +32,12 @@ export const ApplicationViews = (props) => {
                                         />
 
                                         <Route exact path="/products" 
-                                            render={(props) => <ProductList {...props} />}
+                                            render={(props) => 
+                                                <>
+                                                <ProductFilters />
+                                                <ProductList {...props} />
+                                                </>
+                                            }
                                         />
 
                                         <Route exact path="/products/create" 
