@@ -26,11 +26,9 @@ You will also see any lint errors in the console. <br />
 ## Features
 **Home** <br/>
 View all products and fragrance-focused ratings contributed by the scentsitive community. <br/>
-<br/>
 
 **Ratings** <br/>
 Rate any product by fragrance strength. Search by product type, scent family, and more. <br/>
-<br/>
 
 ## Planning
 ERD: [dbdiagram](https://res.cloudinary.com/djxxamywv/image/upload/v1607700927/github/dbdiagram_scentsible_r0gnih.png) <br/>
