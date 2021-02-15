@@ -1,5 +1,5 @@
 # scentsible
-**A place for sustainability and scent-conscious consumers** <br/>
+**A place for scent-conscious consumers** <br/>
 Created by Ha Nguyen <br/>
 
 ## About
