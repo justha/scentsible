@@ -1,6 +1,6 @@
 # scentsible
 **A place for scent-conscious consumers** <br/>
-Created by Ha Nguyen <br/>
+created by Ha Nguyen <br/>
 
 ## About
 Ever wonder just how heavily-fragranced a product is or what it might smell like ***before*** you buy it? This is the place for scent-conscious consumers to rate products, help make informed buying decisions because everyone has a different scent preference and… ultimately reduce the amount of personal care product waste produced each year. 
