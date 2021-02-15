@@ -8,8 +8,6 @@ Ever wonder just how heavily-fragranced a product is or what it might smell like
 ## Installation and Setup
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver)
-
 1. Clone the repository with 'git clone' <br/>
 1. Installations: <br/>
 `npm install` <br />
@@ -22,6 +20,9 @@ See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver)
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. <br />
 The page will reload if you make edits. <br />
 You will also see any lint errors in the console. <br />
+
+**Partner Repo** <br />
+See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver)
 
 ## Features
 **Home** <br/>
