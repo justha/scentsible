@@ -6,7 +6,9 @@ Created by Ha Nguyen <br/>
 Ever wonder just how heavily-fragranced a product is or what it might smell like ***before*** you buy it? This is the place for scent-conscious consumers to rate products, help make informed buying decisions because everyone has a different scent preference and… ultimately reduce the amount of personal care product waste produced each year. 
 
 ## Installation and Setup
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
+See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver).
 
 1. Clone the repository with 'git clone' <br/>
 1. Installations: <br/>
@@ -20,9 +22,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. <br />
 The page will reload if you make edits. <br />
 You will also see any lint errors in the console. <br />
-
-**Partner Repo** <br />
-See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver)
 
 ## Features
 **Home** <br/>
