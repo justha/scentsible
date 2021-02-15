@@ -13,7 +13,7 @@ See partner repo [scentsibleserver](https://github.com/justha/scentsibleserver)
 1. Clone the repository with 'git clone' <br/>
 1. Installations: <br/>
 `npm install` <br />
-`npm i --save react react-dom react-router-dom react-modal` <br />
+`npm i --save react react-dom react-router-dom` <br />
 `npm install json-server` <br />
 `npm install @material-ui/core` <br />
 `npm install @material-ui/icons` <br />
