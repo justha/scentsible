@@ -31,5 +31,5 @@ View all products and fragrance-focused ratings contributed by the scentsitive c
 Rate any product by fragrance strength. Search by product type, scent family, and more. <br/>
 
 ## Planning
-ERD: [dbdiagram](https://res.cloudinary.com/djxxamywv/image/upload/v1607700927/github/dbdiagram_scentsible_r0gnih.png) <br/>
 Wireframe: [Miro](https://res.cloudinary.com/djxxamywv/image/upload/v1607649907/github/miro_scentsible_vispli.png) <br/>
+ERD: [dbdiagram](https://res.cloudinary.com/djxxamywv/image/upload/v1607700927/github/dbdiagram_scentsible_r0gnih.png) <br/>
