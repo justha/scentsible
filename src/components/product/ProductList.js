@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef} from "react"
-import Modal from "react-modal"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
@@ -10,22 +9,16 @@ import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline' // delete icon (trash can)
 import HighlightOffIcon from '@material-ui/icons/HighlightOff' //delete icon ("x")
-import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined' //star icon
 
 export const ProductList = ({ props }) => {
     
     const { products, getProducts, deleteProduct, getProductsByGroup, getProductsByFamily } = useContext(ProductContext)
     const { productreviews, getProductreviews, deleteProductreview } = useContext(ProductreviewContext)
-    const { families, getFamilies, selectedFamilyId } = useContext(FamilyContext)
-    const { groups, getGroups, selectedGroupId } = useContext(GroupContext)
+    const { getFamilies, selectedFamilyId } = useContext(FamilyContext)
+    const { getGroups, selectedGroupId } = useContext(GroupContext)
     
     const history = useHistory()
     const [ arrayOfProducts, setArrayOfProducts ] = useState([])
-    const [ isOpen, setIsOpen ] = useState(false)  //for Modal
-
-    const openModal = () => {
-        setIsOpen(true)
-    }
 
     useEffect(() => {
         getProducts()
@@ -64,8 +57,6 @@ export const ProductList = ({ props }) => {
     useEffect(() => {
         setArrayOfProducts(subset)
     }, [selectedFamilyId])
-
-
 
     
     const renderList = (arrayOfProducts) => {
@@ -208,37 +199,10 @@ export const ProductList = ({ props }) => {
     
     
     return (
-        <>
-            <main>
-                <header className="products__header"> 
-                    <h2 className="title">Products</h2> 
-
-                    <div>                        
-                        <Button 
-                            className="button--addProduct" 
-                            as={Link} 
-                            onClick={() => {history.push({ pathname: "/products/create"})}}
-                            variant="contained"
-                            color="primary"
-                            size="medium"
-                            startIcon={<AddIcon />}
-                            >
-                            New Product
-                        </Button>
-                    </div>
-
-                </header>
-
-                <br></br>
-                            
-                {products !== []
-                ? renderList(arrayOfProducts)
-                : ""}
-            </main>
-
-            <footer>
-                <div className="imageAttribution">Icons made by <a href="https://www.flaticon.com/authors/iconixar" target="_blank" title="iconixar">iconixar </a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">www.flaticon.com</a></div>
-            </footer>
-        </>
+        <div className="container__productList">
+            {products !== []
+            ? renderList(arrayOfProducts)
+            : ""}
+        </div>
     )
 }
