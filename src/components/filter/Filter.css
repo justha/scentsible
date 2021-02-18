@@ -21,10 +21,11 @@
     color: #3f51b5;
     border-color: #3f51b5;
     background: none;
-    border-right: .5px dotted;
+    border: none;
+    /* border-right: .5px dotted;
     border-left: none;
     border-top: none;
-    border-bottom: none;
+    border-bottom: none; */
     cursor: pointer;
     outline: none; 
 } 
