@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef} from "react"
-import Modal from "react-modal"
 import { Link, useHistory } from "react-router-dom"
 import { ProductContext } from "./ProductProvider"
 import { ProductreviewContext } from "../productreview/ProductreviewProvider"
@@ -10,7 +9,6 @@ import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline' // delete icon (trash can)
 import HighlightOffIcon from '@material-ui/icons/HighlightOff' //delete icon ("x")
-import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined' //star icon
 
 export const ProductList = ({ props }) => {
     
@@ -210,7 +208,7 @@ export const ProductList = ({ props }) => {
     return (
         <>
             <main>
-                <header className="products__header"> 
+                {/* <header className="products__header"> 
                     <h2 className="title">Products</h2> 
 
                     <div>                        
@@ -229,7 +227,7 @@ export const ProductList = ({ props }) => {
 
                 </header>
 
-                <br></br>
+                <br></br> */}
                             
                 {products !== []
                 ? renderList(arrayOfProducts)

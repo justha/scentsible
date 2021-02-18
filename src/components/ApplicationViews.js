@@ -8,6 +8,7 @@ import { RatingProvider } from "./rating/RatingProvider"
 import { ProductProvider } from "./product/ProductProvider"
 import { ProductFilters } from "./filter/ProductFilters"
 import { ProductForm } from "./product/ProductForm"
+import { ProductHeader } from "./product/ProductHeader"
 import { ProductList } from "./product/ProductList"
 import { ProductreviewProvider } from "./productreview/ProductreviewProvider"
 import { ProductreviewForm } from "./productreview/ProductreviewForm"
@@ -34,6 +35,7 @@ export const ApplicationViews = (props) => {
                                         <Route exact path="/products" 
                                             render={(props) => 
                                                 <>
+                                                <ProductHeader />
                                                 <ProductFilters />
                                                 <ProductList {...props} />
                                                 </>
