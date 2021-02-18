@@ -12,19 +12,17 @@ export const ProductHeader = () => {
         <header className="products__header"> 
             <h2 className="title">Products</h2> 
 
-            <div>                        
-                <Button 
-                    className="button--addProduct" 
-                    as={Link} 
-                    onClick={() => {history.push({ pathname: "/products/create"})}}
-                    variant="contained"
-                    color="primary"
-                    size="medium"
-                    startIcon={<AddIcon />}
-                    >
-                    New Product
-                </Button>
-            </div>
+            <Button 
+                className="button--addProduct" 
+                as={Link} 
+                onClick={() => {history.push({ pathname: "/products/create"})}}
+                variant="contained"
+                color="primary"
+                size="medium"
+                startIcon={<AddIcon />}
+                >
+                New Product
+            </Button>
         </header>
     )
 }

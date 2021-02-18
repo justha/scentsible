@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { FamilyContext } from "../family/FamilyProvider"
 import { GroupContext } from "../group/GroupProvider"
-import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup' 
 import "./Filter.css"
 
 
