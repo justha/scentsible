@@ -70,7 +70,7 @@ export const ProductFilters = () => {
                         as={Link} 
                         onClick={() => {setSelectedGroupId(0)}} 
                         disabled={(selectedGroupId === 0) ? true : ""}
-                        > 
+                    > 
                         Clear Filter
                     </button>
 

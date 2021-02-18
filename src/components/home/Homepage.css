@@ -1,0 +1,17 @@
+
+.homepage__main {
+}
+
+.container--homepageButtons {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 200px;
+}
+
+.container--homepageButtons > Button {
+    margin: 1rem;
+}
+
+.button--selectProductGroup {
+}

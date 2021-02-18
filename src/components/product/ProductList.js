@@ -30,13 +30,13 @@ export const ProductList = ({ props }) => {
     
     // Upon changes to products, gets products and re-sets array of products to refresh ProductList
     useEffect(() => {
-        setArrayOfProducts(products)
+        setArrayOfProducts(subset)
     }, [products])
     
     // Upon changes to productreviews, gets products and re-sets array of products to refresh ProductList
     useEffect(() => {
         getProducts()
-        setArrayOfProducts(products)
+        setArrayOfProducts(subset)
     }, [productreviews])
     
 
