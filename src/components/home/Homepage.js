@@ -31,7 +31,7 @@ export const Homepage = ({ props }) => {
                                     history.push({ pathname: "/products"})
                                     }}
                                     variant="outlined"
-                                    color="primary"
+                                    // color="primary"
                                     size="large"
                             > 
                                 {group.name} 
@@ -47,7 +47,7 @@ export const Homepage = ({ props }) => {
                             history.push({ pathname: "/products"})
                             }}
                         variant="outlined"
-                        color="primary"
+                        // color="primary"
                         size="large"
                     > 
                         All
