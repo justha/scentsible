@@ -7,6 +7,7 @@ import { Homepage } from "./home/Homepage"
 import { RatingProvider } from "./rating/RatingProvider"
 import { ProductProvider } from "./product/ProductProvider"
 import { ProductFilters } from "./filter/ProductFilters"
+import { ProductSearch } from "./filter/ProductSearch"
 import { ProductForm } from "./product/ProductForm"
 import { ProductHeader } from "./product/ProductHeader"
 import { ProductFooter } from "./product/ProductFooter"
@@ -38,6 +39,7 @@ export const ApplicationViews = (props) => {
                                                 <>
                                                 <ProductHeader />
                                                 <ProductFilters />
+                                                <ProductSearch />
                                                 <ProductList {...props} />
                                                 <ProductFooter />
                                                 </>
