@@ -51,7 +51,7 @@ export const ProductFilters = () => {
                                 as={Link} 
                                 value={group.id} 
                                 onClick={(event) => {
-                                    const groupId = parseInt(event.target.value)
+                                    const groupId = parseInt(event.currentTarget.value)
                                     setSelectedGroupId(groupId)
                                     }}
                                 style={
@@ -86,7 +86,7 @@ export const ProductFilters = () => {
                             as={Link} 
                             value={family.id} 
                             onClick={(event) => {
-                                const familyId = parseInt(event.target.value)
+                                const familyId = parseInt(event.currentTarget.value)
                                 setSelectedFamilyId(familyId)
                             }}
                             style={
