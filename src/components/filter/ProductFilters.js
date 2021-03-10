@@ -39,7 +39,7 @@ export const ProductFilters = () => {
                                 selectedGroupId === 0 && selectedFamilyId === 0
                                 ? filterOn
                                 : filterOff
-                            }
+                                }
                             size="small" 
                             variant="outlined"
                             color="secondary" 
@@ -66,7 +66,7 @@ export const ProductFilters = () => {
                                         selectedGroupId === group.id 
                                         ? filterOn
                                         : filterOff
-                                    }
+                                        }
                                     size="small" 
                                     variant="outlined"
                                     color="secondary" 
@@ -80,12 +80,17 @@ export const ProductFilters = () => {
                             className="button--clearFilter" 
                             as={Link} 
                             onClick={() => {setSelectedGroupId(0)}} 
+                            style={
+                                selectedGroupId === 0
+                                ? filterOn
+                                : filterOff
+                                }
                             disabled={(selectedGroupId === 0) ? true : ""}
                             size="small" 
                             variant="outlined"
                             color="secondary" 
                         > 
-                            Reset
+                            {(selectedGroupId === 0) ? "All" : "Reset"}
                         </Button>
                     </ButtonGroup>
 
@@ -110,10 +115,10 @@ export const ProductFilters = () => {
                                     ? filterOn
                                     : filterOff
                                     }
-                                size="small" 
-                                variant="outlined" 
-                                color="secondary"
-                                > 
+                                    size="small" 
+                                    variant="outlined" 
+                                    color="secondary"
+                                    > 
                                     {family.name} 
                                 </Button>
                                 )
@@ -123,12 +128,17 @@ export const ProductFilters = () => {
                             className="button--clearFilter" 
                             as={Link} 
                             onClick={() => {setSelectedFamilyId(0)}}
+                            style={
+                                selectedFamilyId === 0
+                                ? filterOn
+                                : filterOff
+                                }
                             disabled={(selectedFamilyId === 0) ? true : ""}
                             size="small" 
                             variant="outlined"
                             color="secondary" 
-                            > 
-                            Reset
+                        > 
+                            {(selectedFamilyId === 0) ? "All" : "Reset"}
                         </Button>
                     </ButtonGroup>
 

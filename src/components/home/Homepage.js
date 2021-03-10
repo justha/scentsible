@@ -30,8 +30,8 @@ export const Homepage = ({ props }) => {
                                     setSelectedGroupId(groupId)
                                     history.push({ pathname: "/products"})
                                     }}
-                                    variant="outlined"
-                                    color="primary"
+                                    variant="contained"
+                                    color="none"
                                     size="large"
                             > 
                                 {group.name} 
@@ -46,8 +46,8 @@ export const Homepage = ({ props }) => {
                             setSelectedGroupId(0)
                             history.push({ pathname: "/products"})
                             }}
-                        variant="outlined"
-                        color="primary"
+                        variant="contained"
+                        color="none"
                         size="large"
                     > 
                         All

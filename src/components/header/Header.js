@@ -9,7 +9,7 @@ export const Header = () => {
     return (
         <section>
             <a className="homeAnchor" href="" onClick={() => {history.push({ pathname: `/home`})}}>                
-                <div className="header"><b>🦨 scentsible</b></div>
+                <div className="header"><b>🦨scentsible</b></div>
             </a>
         </section>
     )
