@@ -5,6 +5,7 @@ import { GroupContext } from "../group/GroupProvider"
 import "./Filter.css"
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
+import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
 
 export const ProductFilters = () => {
     const { families, getFamilies, selectedFamilyId, setSelectedFamilyId } = useContext(FamilyContext)
@@ -25,76 +26,6 @@ export const ProductFilters = () => {
     return (
         <>
             <section className="container--productFilters"> 
- 
-                {/* <article className="container--filterSet">                    
-                        <h3 className="filter__title">View</h3>
-                        <Button 
-                            className="button--viewAll" 
-                            as={Link} 
-                            onClick={() => {
-                                setSelectedGroupId(0)
-                                setSelectedFamilyId(0)
-                            }} 
-                            style={
-                                selectedGroupId === 0 && selectedFamilyId === 0
-                                ? filterOn
-                                : filterOff
-                                }
-                            size="small" 
-                            variant="outlined"
-                            color="secondary" 
-                        > 
-                            ALL 
-                        </Button>
-                </article> */}
-
-                <article className="container--filterSet"> 
-                    <h3 className="filter__title">Product Type</h3>                     
-                    
-                    <ButtonGroup>
-                        {groups.map(group => {
-                            return (                            
-                                <Button 
-                                    className="button--filterProductGroup" 
-                                    as={Link} 
-                                    value={group.id} 
-                                    onClick={(event) => {
-                                        const groupId = parseInt(event.currentTarget.value)
-                                        setSelectedGroupId(groupId)
-                                        }}
-                                    style={
-                                        selectedGroupId === group.id 
-                                        ? filterOn
-                                        : filterOff
-                                        }
-                                    size="small" 
-                                    variant="outlined"
-                                    color="secondary" 
-                                > 
-                                    {group.name} 
-                                </Button>
-                            )
-                        })}
-                        
-                        <Button 
-                            className="button--clearFilter" 
-                            as={Link} 
-                            onClick={() => {setSelectedGroupId(0)}} 
-                            style={
-                                selectedGroupId === 0
-                                ? filterOn
-                                : filterOff
-                                }
-                            disabled={(selectedGroupId === 0) ? true : ""}
-                            size="small" 
-                            variant="outlined"
-                            color="secondary" 
-                        > 
-                            {(selectedGroupId === 0) ? "All" : "Reset"}
-                        </Button>
-                    </ButtonGroup>
-
-                </article>
 
                 <article className="container--filterSet"> 
                     <h3 className="filter__title">Scent Type</h3>
@@ -138,7 +69,62 @@ export const ProductFilters = () => {
                             variant="outlined"
                             color="secondary" 
                         > 
-                            {(selectedFamilyId === 0) ? "All" : "Reset"}
+                            {(selectedFamilyId === 0) 
+                                ? "All" 
+                                : <SettingsBackupRestoreIcon/> 
+                                // : "Reset"
+                            }
+                        </Button>
+                    </ButtonGroup>
+
+                </article>
+
+                <article className="container--filterSet"> 
+                    <h3 className="filter__title">Product Type</h3>                     
+                    
+                    <ButtonGroup>
+                        {groups.map(group => {
+                            return (                            
+                                <Button 
+                                    className="button--filterProductGroup" 
+                                    as={Link} 
+                                    value={group.id} 
+                                    onClick={(event) => {
+                                        const groupId = parseInt(event.currentTarget.value)
+                                        setSelectedGroupId(groupId)
+                                        }}
+                                    style={
+                                        selectedGroupId === group.id 
+                                        ? filterOn
+                                        : filterOff
+                                        }
+                                    size="small"     
+                                    variant="outlined"
+                                    color="secondary" 
+                                > 
+                                    {group.name} 
+                                </Button>        
+                            )
+                        })}
+                        
+                        <Button 
+                            className="button--clearFilter" 
+                            as={Link} 
+                            onClick={() => {setSelectedGroupId(0)}} 
+                            style={
+                                selectedGroupId === 0
+                                ? filterOn
+                                : filterOff                
+                                }
+                            disabled={(selectedGroupId === 0) ? true : ""}
+                            size="small" 
+                            variant="outlined"
+                            color="secondary" 
+                        > 
+                            {(selectedGroupId === 0) 
+                                ? "All" 
+                                : <SettingsBackupRestoreIcon/> 
+                            }
                         </Button>
                     </ButtonGroup>
 

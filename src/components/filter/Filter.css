@@ -16,31 +16,9 @@
 
 /* ['outline: none' removes focus box when button is clicked] */
 /* ['cursor: pointer' changes cursor from arrow to hand when hover over button] */
-.button--filterProductGroup, 
+/* .button--filterProductGroup, 
 .button--filterScentFamily {
-    color: #3f51b5;
-    border-color: #3f51b5;
-    background: none;
-    border: none;
-    /* border-right: .5px dotted;
-    border-left: none;
-    border-top: none;
-    border-bottom: none; */
     cursor: pointer;
     outline: none; 
-} 
+}  */
 
-.button--viewAll {
-    color: #3f51b5;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none; 
-} 
-
-.button--clearFilter {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none; 
-} 

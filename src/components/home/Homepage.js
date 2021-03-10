@@ -19,6 +19,20 @@ export const Homepage = ({ props }) => {
             <main className="homepage__main">                
                 <section className="container--homepageButtons"> 
 
+                <Button 
+                    className="button--selectProductGroup" 
+                    as={Link} 
+                    onClick={(event) => {
+                        setSelectedGroupId(0)
+                        history.push({ pathname: "/products"})
+                        }}
+                    variant="outlined"
+                    color="none"
+                    size="large"
+                > 
+                    All
+                </Button>
+
                     {groups.map(group => {
                         return (   
                             <Button 
@@ -34,26 +48,12 @@ export const Homepage = ({ props }) => {
                                     color="none"
                                     size="large"
                                     endIcon={<FilterListIcon />}
-                                    // startIcon={<img className="button__imgURL" src={"https://res.cloudinary.com/djxxamywv/image/upload/v1615344084/scentsible/hairdryer_gradient_iconixar_x4uny3.png"} />}
+                                    // startIcon={<img className="button__imgURL" src={"https://res.cloudinary.com/djxxamywv/image/upload/v1615344084/scentsible/hairdryer_gradient_iconixar_x4uny3.png"} />}    
                             > 
                                 {group.name} 
-                            </Button>
+                            </Button>            
                         )
                     })}
-
-                    <Button 
-                        className="button--selectProductGroup" 
-                        as={Link} 
-                        onClick={(event) => {
-                            setSelectedGroupId(0)
-                            history.push({ pathname: "/products"})
-                            }}
-                        variant="outlined"
-                        color="none"
-                        size="large"
-                    > 
-                        All
-                    </Button>
 
                 </section>
             </main>
