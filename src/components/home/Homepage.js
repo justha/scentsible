@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import { GroupContext } from "../group/GroupProvider"
 import Button from '@material-ui/core/Button'
 import "./Homepage.css"
-
+import FilterListIcon from '@material-ui/icons/FilterList'
 
 export const Homepage = ({ props }) => {
     const { groups, getGroups, setSelectedGroupId } = useContext(GroupContext)    
@@ -30,9 +30,11 @@ export const Homepage = ({ props }) => {
                                     setSelectedGroupId(groupId)
                                     history.push({ pathname: "/products"})
                                     }}
-                                    variant="contained"
+                                    variant="outlined"
                                     color="none"
                                     size="large"
+                                    endIcon={<FilterListIcon />}
+                                    // startIcon={<img className="button__imgURL" src={"https://res.cloudinary.com/djxxamywv/image/upload/v1615344084/scentsible/hairdryer_gradient_iconixar_x4uny3.png"} />}
                             > 
                                 {group.name} 
                             </Button>
@@ -46,7 +48,7 @@ export const Homepage = ({ props }) => {
                             setSelectedGroupId(0)
                             history.push({ pathname: "/products"})
                             }}
-                        variant="contained"
+                        variant="outlined"
                         color="none"
                         size="large"
                     > 
