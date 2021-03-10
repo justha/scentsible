@@ -5,7 +5,7 @@
 .container--homepageButtons {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    max-width: 500px;
 }
 
 .container--homepageButtons > Button {
@@ -14,3 +14,8 @@
 
 .button--selectProductGroup {
 }
+
+
+.button__imgURL {
+    width: 2em;
+} 

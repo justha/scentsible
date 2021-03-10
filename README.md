@@ -5,6 +5,10 @@ created by Ha Nguyen
 ## About
 Ever wonder just how heavily-fragranced a product is or what it might smell like ***before*** you buy it? This is the place for scent-conscious consumers to rate products, help make informed buying decisions because everyone has a different scent preference and… ultimately reduce the amount of personal care product waste produced each year. 
 
+## Planning
+Wireframe: [Miro](https://res.cloudinary.com/djxxamywv/image/upload/v1607649907/github/miro_scentsible_vispli.png) <br/>
+ERD: [dbdiagram](https://res.cloudinary.com/djxxamywv/image/upload/v1607700927/github/dbdiagram_scentsible_r0gnih.png) <br/>
+
 ## Installation and Setup
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
@@ -29,7 +33,3 @@ View all products and fragrance-focused ratings contributed by the scentsitive c
 
 **Ratings** <br/>
 Rate any product by fragrance strength. Search by product type, scent family, and more. <br/>
-
-## Planning
-Wireframe: [Miro](https://res.cloudinary.com/djxxamywv/image/upload/v1607649907/github/miro_scentsible_vispli.png) <br/>
-ERD: [dbdiagram](https://res.cloudinary.com/djxxamywv/image/upload/v1607700927/github/dbdiagram_scentsible_r0gnih.png) <br/>
