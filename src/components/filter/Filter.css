@@ -14,11 +14,3 @@
     font-weight: bold;
 }
 
-/* ['outline: none' removes focus box when button is clicked] */
-/* ['cursor: pointer' changes cursor from arrow to hand when hover over button] */
-/* .button--filterProductGroup, 
-.button--filterScentFamily {
-    cursor: pointer;
-    outline: none; 
-}  */
-

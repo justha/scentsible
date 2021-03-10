@@ -28,7 +28,7 @@ export const ProductFilters = () => {
             <section className="container--productFilters"> 
 
                 <article className="container--filterSet"> 
-                    <h3 className="filter__title">Scent Type</h3>
+                    <h3 className="filter__title">Scent Family</h3>
                     
                     <ButtonGroup>                        
                         {families.map(family => {
