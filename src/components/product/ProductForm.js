@@ -98,13 +98,13 @@ export const ProductForm = (props) => {
                     <TextField 
                         name="name" 
                         label="Product Name"
-                        defaultValue={prodObj.name}
+                        value={prodObj.name}
                         onChange={handleControlledInputChange}
                         // helperText="Please input a product name"
                         variant="outlined"
                     />
                 </fieldset>
-                
+               
                 <fieldset>                    
                     <TextField 
                         select
@@ -128,7 +128,7 @@ export const ProductForm = (props) => {
                         type="url"
                         name="image_url" 
                         label="Image URL"
-                        defaultValue={prodObj.image_url}
+                        value={prodObj.image_url}
                         onChange={handleControlledInputChange}
                         variant="outlined"
                     />
