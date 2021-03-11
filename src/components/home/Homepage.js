@@ -55,20 +55,6 @@ export const Homepage = ({ props }) => {
                         )
                     })}
 
-                    <Button 
-                        className="button--selectProductGroup" 
-                        as={Link} 
-                        onClick={(event) => {
-                            setSelectedGroupId(0)
-                            history.push({ pathname: "/products"})
-                            }}
-                        variant="outlined"
-                        color="none"
-                        size="large"
-                    > 
-                        All
-                    </Button>
-
                 </section>
             </main>
 
