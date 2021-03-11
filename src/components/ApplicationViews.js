@@ -39,7 +39,7 @@ export const ApplicationViews = (props) => {
                                                 <>
                                                 <ProductHeader />
                                                 <ProductFilters />
-                                                <ProductSearch />
+                                                {/* <ProductSearch /> */}
                                                 <ProductList {...props} />
                                                 <ProductFooter />
                                                 </>
