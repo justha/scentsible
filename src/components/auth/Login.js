@@ -3,7 +3,9 @@ import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 
 export const Login = (props) => {
@@ -80,23 +82,28 @@ export const Login = (props) => {
         
         <form className="form--login" onSubmit={handleLogin}>
           <fieldset label="Email address" htmlFor="inputEmail">
-            <TextField
+            <Input
               inputRef={user}
               type="text"
               id="username"
               placeholder="Username"
               required
-            />
+              />
           </fieldset>
 
           <fieldset label="Password" htmlFor="inputPassword">
-            <TextField
+            <Input
               inputRef={password}
               type="password"
               id="password"
               placeholder="Password"
-              required
-            />
+              required   
+              // endAdornment={
+              //   <InputAdornment position="end">
+              //       <VisibilityOff /> 
+              //   </InputAdornment>
+              // }
+              />
           </fieldset>
 
           <fieldset>

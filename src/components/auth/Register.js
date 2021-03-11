@@ -3,7 +3,7 @@ import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
+import Input from '@material-ui/core/Input'
 
 export const Register = (props) => {
     const firstName = useRef()
@@ -53,30 +53,30 @@ export const Register = (props) => {
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 <fieldset>
                     <label htmlFor="firstName"></label>
-                    <TextField inputRef={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" />
+                    <Input inputRef={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"></label>
-                    <TextField inputRef={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" />
+                    <Input inputRef={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"></label>
-                    <TextField inputRef={email} type="email" name="email" className="form-control" placeholder="Email" required />
+                    <Input inputRef={email} type="email" name="email" className="form-control" placeholder="Email" required />
                 </fieldset>
 
                 <br></br>
                 
                 <fieldset>
                     <label htmlFor="userName"></label>
-                    <TextField inputRef={userName} type="text" name="userName" className="form-control" placeholder="Username" />
+                    <Input inputRef={userName} type="text" name="userName" className="form-control" placeholder="Username" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputPassword"></label>
-                    <TextField inputRef={password} type="password" name="password" className="form-control" placeholder="Password" required />
+                    <Input inputRef={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="verifyPassword"></label>
-                    <TextField inputRef={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify Password" required />
+                    <Input inputRef={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify Password" required />
                 </fieldset>
 
                 <br></br>
