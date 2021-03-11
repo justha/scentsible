@@ -2,6 +2,8 @@
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 
 export const Login = (props) => {
@@ -78,8 +80,8 @@ export const Login = (props) => {
         
         <form className="form--login" onSubmit={handleLogin}>
           <fieldset label="Email address" htmlFor="inputEmail">
-            <input
-              ref={user}
+            <TextField
+              inputRef={user}
               type="text"
               id="username"
               placeholder="Username"
@@ -88,8 +90,8 @@ export const Login = (props) => {
           </fieldset>
 
           <fieldset label="Password" htmlFor="inputPassword">
-            <input
-              ref={password}
+            <TextField
+              inputRef={password}
               type="password"
               id="password"
               placeholder="Password"
@@ -99,15 +101,18 @@ export const Login = (props) => {
 
           <fieldset>
             <div align="center" pad="medium">
-              <button
-                size="large"
+              <Button
+                type="submit"
+                size="normal"
                 label="sign in"
                 fill={false}
                 margin="small"
                 pad="small"
-                primary
-                type="submit"
-              >Log In</button>
+                color="primary"
+                variant="contained"
+              >
+                Log In
+              </Button>
             </div>
           </fieldset>
           

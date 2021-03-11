@@ -2,6 +2,8 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 export const Register = (props) => {
     const firstName = useRef()
@@ -51,36 +53,44 @@ export const Register = (props) => {
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 <fieldset>
                     <label htmlFor="firstName"></label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" />
+                    <TextField inputRef={firstName} type="text" name="firstName" className="form-control" placeholder="First Name" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"></label>
-                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" />
+                    <TextField inputRef={lastName} type="text" name="lastName" className="form-control" placeholder="Last Name" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"></label>
-                    <input ref={email} type="email" name="email" className="form-control" placeholder="Email" required />
+                    <TextField inputRef={email} type="email" name="email" className="form-control" placeholder="Email" required />
                 </fieldset>
 
                 <br></br>
                 
                 <fieldset>
                     <label htmlFor="userName"></label>
-                    <input ref={userName} type="text" name="userName" className="form-control" placeholder="Username" />
+                    <TextField inputRef={userName} type="text" name="userName" className="form-control" placeholder="Username" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputPassword"></label>
-                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
+                    <TextField inputRef={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="verifyPassword"></label>
-                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify Password" required />
+                    <TextField inputRef={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify Password" required />
                 </fieldset>
 
                 <br></br>
 
                 <fieldset>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Create Account</button>
+                    <Button 
+                        className="btn btn-1 btn-sep icon-send" 
+                        type="submit"
+                        size="normal"
+                        color="primary"
+                        variant="contained"
+                    >
+                        Create Account
+                    </Button>
                 </fieldset>
 
             </form>

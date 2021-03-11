@@ -15,9 +15,10 @@ footer {
 
 
 /* Form ****** */
+.productForm__title, 
 .form--product,
 .button--createProduct {
-    text-align: center;
+    text-align: left;
 }
 
 .form--product > fieldset, 
