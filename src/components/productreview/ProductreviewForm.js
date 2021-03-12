@@ -65,57 +65,35 @@ export const ProductreviewForm = (props) => {
             <FormControl component="fieldset">
                 <FormLabel component="legend">Scent Strength</FormLabel>
 
-                {ratings.map(rating => {
-                    <RadioGroup 
-                        value={prodreviewObj.rating_id}
-                        onChange={handleControlledInputChange}
-                    > 
-                        <FormControlLabel
-                            value={rating.id} 
-                            control={<Radio />}
-                            label={rating.name}
-                        />                            
-                    </RadioGroup>
-                })}
+                <RadioGroup value={prodreviewObj.rating_id} onChange={handleControlledInputChange}> 
+                    {ratings.map(rating => {
+                        return (
+                            <FormControlLabel
+                                name="rating_id"
+                                value={rating.id} 
+                                control={
+                                    <Radio size="small" />
+                                    }
+                                label={`${rating.weight}-${rating.name}`}
+                            />)
+                    })}
+                </RadioGroup>
             </FormControl>
 
-            <fieldset>
-                <label>Scent Strength Rating: </label>
-                <br></br>
-                <div className="form--radiobuttons">
-                    {ratings.map(rating => {
-                        return(
-                            <div className="form-radiobuttonPair">
-                                <input type="radio" id="" name="rating_id" value={rating.id} checked={prodreviewObj.rating_id === rating.id} onChange={handleControlledInputChange}></input>
-                                <label>{rating.weight}-{rating.name}</label>
-                            </div>)
-                    })}
-                </div>
-            </fieldset>
-         
-            <fieldset>
-                <TextField type="text" name="review" className="form-control" autoFocus 
-                    label="Product Review"
-                    // placeholder="Comments"
-                    defaultValue={prodreviewObj.review}
-                    onChange={handleControlledInputChange}
-                    fullWidth
-                    multiline
-                    rows={2}
-                    InputLabelProps={{shrink: true,}}
-                    variant="filled"
-                />
-            </fieldset>
-            
-            {/* <fieldset>
-                <label htmlFor="name">Product Review: </label>
-                <br></br>
-                <textarea type="text" name="review" className="form-control" autoFocus 
-                    placeholder="Comments"
-                    defaultValue={prodreviewObj.review}
-                    onChange={handleControlledInputChange}/>
-            </fieldset> */}
-            
+
+            <TextField type="text" name="review" className="form-control" autoFocus 
+                label="Product Review"
+                // placeholder="Comments"
+                defaultValue={prodreviewObj.review}
+                onChange={handleControlledInputChange}
+                fullWidth
+                multiline
+                rows={2}
+                InputLabelProps={{shrink: true,}}
+                variant="filled"
+            />
+
+
 
             {editMode 
             ? (

@@ -1,7 +1,7 @@
 /* Product Reviews *******  */
 .form--productreview,
 .button--createProductreview {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .form--productreview > fieldset {}
