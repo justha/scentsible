@@ -142,7 +142,7 @@ export const Login = (props) => {
           margin="small"
           justify="center"
         >
-          Register
+          Create a new account
         </Link>
       </div>
       

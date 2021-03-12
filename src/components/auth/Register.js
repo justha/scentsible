@@ -103,8 +103,16 @@ export const Register = (props) => {
                     className="link--login" 
                     to="/login"
                 >
-                    Login
+                    Return to Login
                 </Link>
+            </section>
+
+
+            <br></br>
+            <br></br>
+            <section className="disclaimer">
+                <p>*This application is for demo purposes only. </p>
+                <p>Please use dummy info to create your test account above. </p>
             </section>
 
         </main>
