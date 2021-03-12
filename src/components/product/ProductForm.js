@@ -58,81 +58,84 @@ export const ProductForm = (props) => {
 
             <form className="form--product">
 
-                <fieldset>
-                    <TextField 
-                        select
-                        label="Product Group"
-                        name="group_id" 
-                        value={prodObj.group_id}
-                        onChange={handleControlledInputChange}
-                        // helperText="Please select a product group"
-                        variant="outlined"
-                    >
-                        <MenuItem value="0">Product Group</MenuItem>
-
-                        {groups.map(group => {
-                            return <MenuItem value={group.id}>{group.name}</MenuItem>
-                        })}
-                    </TextField>
-                </fieldset>
-
-                <fieldset>
+                <div>
                     <TextField 
                         select
                         label="Brand"
                         name="brand_id" 
                         value={prodObj.brand_id}
                         onChange={handleControlledInputChange}
-                        // helperText="Please select a brand"
-                        variant="outlined"
+                        // helperText="Select a brand"
+                        // variant="filled"
+                        fullWidth
                     >
-                        <MenuItem value="0">Brand Name</MenuItem>
+                        <MenuItem value="0">select one</MenuItem>
                         
                         {brands.map(brand => {
                             return <MenuItem value={brand.id}>{brand.name}</MenuItem>
                         })}
                     </TextField>
-                </fieldset>
-
-                <fieldset>
+                    
                     <TextField 
                         name="name" 
                         label="Product Name"
                         value={prodObj.name}
                         onChange={handleControlledInputChange}
-                        // helperText="Please input a product name"
-                        variant="outlined"
+                        // helperText="Enter a product name"
+                        // variant="filled"
+                        fullWidth
                     />
-                </fieldset>
+                </div>
                
-                <fieldset>                    
+                <div>
+                    <TextField 
+                        select
+                        label="Product Group"
+                        name="group_id" 
+                        value={prodObj.group_id}
+                        onChange={handleControlledInputChange}
+                        // helperText="Select a product group"
+                        // variant="filled"
+                        fullWidth
+                    >
+                        <MenuItem value="0">select one</MenuItem>
+
+                        {groups.map(group => {
+                            return <MenuItem value={group.id}>{group.name}</MenuItem>
+                        })}
+                    </TextField>
+                </div>
+
+                <div>                    
                     <TextField 
                         select
                         label="Scent Family"
                         name="family_id" 
                         value={prodObj.family_id}
                         onChange={handleControlledInputChange}
-                        // helperText="Please select a scent family"
-                        variant="outlined"
+                        // helperText="Select a scent family"
+                        // variant="filled"
+                        fullWidth
                     >
-                        <MenuItem value="0">Scent Family</MenuItem>
+                        <MenuItem value="0">select one</MenuItem>
                         
                         {families.map(family => {
                             return <MenuItem value={family.id}>{family.name}</MenuItem>
                         })}
                     </TextField>
-                </fieldset>
+                </div>
 
-                {/* <fieldset>
+                {/* <div>
                     <TextField 
                         type="url"
                         name="image_url" 
                         label="Image URL"
                         value={prodObj.image_url}
                         onChange={handleControlledInputChange}
-                        variant="outlined"
+                        variant="filled"
+                        fullWidth
                     />
-                </fieldset> */}
+                </div> */}
                 
 
                 {editMode 
@@ -155,7 +158,7 @@ export const ProductForm = (props) => {
                             updateProduct(revisedProduct)  // Sends PUT request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                         size="medium"
                         startIcon={<SaveIcon />}
@@ -182,7 +185,7 @@ export const ProductForm = (props) => {
                                 addProduct(newProduct)  // Sends POST request to API
                                 .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                             }}
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                         size="medium"
                         startIcon={<SaveIcon />}
