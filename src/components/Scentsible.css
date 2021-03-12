@@ -5,3 +5,10 @@
 fieldset {
     border: none;
 }
+
+.container__top {
+}
+
+.container__bottom {
+    margin: 4rem;
+}

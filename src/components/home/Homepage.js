@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState} from "react"
 import { Link, useHistory } from "react-router-dom"
 import { GroupContext } from "../group/GroupProvider"
+import { FamilyContext } from "../family/FamilyProvider"
 import Button from '@material-ui/core/Button'
 import "./Homepage.css"
 import FilterListIcon from '@material-ui/icons/FilterList'
 
 export const Homepage = ({ props }) => {
-    const { groups, getGroups, setSelectedGroupId } = useContext(GroupContext)    
+    const { groups, getGroups, setSelectedGroupId } = useContext(GroupContext)
+    const { setSelectedFamilyId } = useContext(FamilyContext)
     const history = useHistory()
 
     useEffect(() => {
@@ -42,6 +44,7 @@ export const Homepage = ({ props }) => {
                                 onClick={(event) => {
                                     const groupId = parseInt(event.currentTarget.value)  //note: material-ui uses 'currentTarget' instead of 'target'
                                     setSelectedGroupId(groupId)
+                                    setSelectedFamilyId(0)
                                     history.push({ pathname: "/products"})
                                     }}
                                     variant="outlined"

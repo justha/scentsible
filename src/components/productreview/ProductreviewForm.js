@@ -4,6 +4,12 @@ import { RatingContext } from "../rating/RatingProvider"
 import "./Productreview.css"
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
+import TextField from '@material-ui/core/TextField'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
 
 
 
@@ -53,32 +59,41 @@ export const ProductreviewForm = (props) => {
             <h2 className="productreviewForm__title">
                 {editMode 
                 ? "Edit Your Product Review" 
-                : "Review This Product"}
+                : "Rate This Product"}
             </h2>
 
-            <fieldset>
-                <label>Scent Strength Rating: </label>
-                <br></br>
-                <div className="form--radiobuttons">
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Scent Strength</FormLabel>
+
+                <RadioGroup value={prodreviewObj.rating_id} onChange={handleControlledInputChange}> 
                     {ratings.map(rating => {
-                        return(
-                            <div className="form-radiobuttonPair">
-                                <input type="radio" id="" name="rating_id" value={rating.id} checked={prodreviewObj.rating_id === rating.id} onChange={handleControlledInputChange}></input>
-                                <label>{rating.weight}-{rating.name}</label>
-                            </div>)
+                        return (
+                            <FormControlLabel
+                                name="rating_id"
+                                value={rating.id} 
+                                control={
+                                    <Radio size="small" />
+                                    }
+                                label={`${rating.weight}-${rating.name}`}
+                            />)
                     })}
-                </div>
-            </fieldset>
-         
-            <fieldset>
-                <label htmlFor="name">Product Review: </label>
-                <br></br>
-                <textarea type="text" name="review" className="form-control" autoFocus 
-                    placeholder="Comments"
-                    defaultValue={prodreviewObj.review}
-                    onChange={handleControlledInputChange}/>
-            </fieldset>
-            
+                </RadioGroup>
+            </FormControl>
+
+
+            <TextField type="text" name="review" className="form-control" autoFocus 
+                label="Product Review"
+                // placeholder="Comments"
+                defaultValue={prodreviewObj.review}
+                onChange={handleControlledInputChange}
+                fullWidth
+                multiline
+                rows={2}
+                InputLabelProps={{shrink: true,}}
+                variant="filled"
+            />
+
+
 
             {editMode 
             ? (
@@ -100,7 +115,7 @@ export const ProductreviewForm = (props) => {
                         updateProductreview(revisedProductreview)  // Sends PUT request to API
                         .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                     }}
-                    variant="contained"
+                    variant="outlined"
                     color="primary"
                     size="medium"
                     startIcon={<SaveIcon />}
@@ -127,7 +142,7 @@ export const ProductreviewForm = (props) => {
                             addProductreview(newProductreview)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                         size="medium"
                         startIcon={<SaveIcon />}

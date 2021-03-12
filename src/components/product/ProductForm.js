@@ -6,6 +6,8 @@ import { GroupContext } from "../group/GroupProvider"
 import "./Product.css"
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
+import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
 
 
 
@@ -51,136 +53,150 @@ export const ProductForm = (props) => {
 
 
     return (
-        <form className="form--product">
+        <>
             <h2 className="productForm__title">{editMode ? "Edit Existing Product" : "Add a New Product"}</h2>
 
-            <fieldset>
-                <div className="form-group">
-                    {/* <label htmlFor="group_id">Product Group: </label> */}
-                    <select name="group_id" className="form-control"
-                        value={prodObj.group_id}
-                        onChange={handleControlledInputChange}>
-                        <option value="0">Product Group</option>
-                            {groups.map(group => {
-                                return <option value={group.id}>{group.name}</option>
-                            })}
-                    </select>
-                </div>
-            </fieldset>
+            <form className="form--product">
 
-            <fieldset>
-                <div className="form-group">
-                    {/* <label htmlFor="brand_id">Brand: </label> */}
-                    <select name="brand_id" className="form-control"
+                <div>
+                    <TextField 
+                        select
+                        label="Brand"
+                        name="brand_id" 
                         value={prodObj.brand_id}
-                        onChange={handleControlledInputChange}>
-                        <option value="0">Brand</option>
-                        {
-                            brands.map(brand => {
-                                return <option value={brand.id}>{brand.name}</option>
-                            })
-                        }
-                    </select>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <div className="form-group">
-                    {/* <label htmlFor="name">Product Name: </label> */}
-                    <input type="text" name="name" className="form-control" required autoFocus 
-                        placeholder="Product Name"
-                        defaultValue={prodObj.name}
                         onChange={handleControlledInputChange}
-                    />
-                </div>
-            </fieldset>
-            
-            <fieldset>
-                <div className="form-group">
-                    {/* <label htmlFor="family_id">Scent Family: </label> */}
-                    <select name="family_id" className="form-control"
-                        value={prodObj.family_id}
-                        onChange={handleControlledInputChange}>
-                        <option value="0">Scent Family</option>
-                        {
-                            families.map(family => {
-                            return <option value={family.id}>{family.name}</option>
-                            })
-                        }
-                    </select>
-                </div>
-            </fieldset>
-
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="image_url">Image URL </label>
-                    <input type="text" name="image_url" className="form-control" autoFocus 
-                        placeholder="Image URL"
-                        defaultValue={prodObj.image_url}
-                        onChange={handleControlledInputChange}
-                    />
-                </div>
-            </fieldset> */}
-            
-
-            {editMode 
-            ? (
-                <div>                    
-                <Button 
-                    className="button--updateProduct"
-                    type="submit"
-                    onClick={clickEvent => {
-                        clickEvent.preventDefault()  // Prevents form from being submitted
-
-                        const revisedProduct = {
-                            id: prodObj.id,
-                            name: prodObj.name,
-                            image_url: prodObj.image_url,
-                            group_id: parseInt(prodObj.group_id),
-                            brand_id: parseInt(prodObj.brand_id),
-                            family_id: parseInt(prodObj.family_id)}
+                        // helperText="Select a brand"
+                        // variant="filled"
+                        fullWidth
+                    >
+                        <MenuItem value="0">select one</MenuItem>
                         
-                        updateProduct(revisedProduct)  // Sends PUT request to API
-                        .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
-                    }}
-                    variant="contained"
-                    color="primary"
-                    size="medium"
-                    startIcon={<SaveIcon />}
-                >
-                Update
-                </Button>
-            </div>
-            )
-            : (
+                        {brands.map(brand => {
+                            return <MenuItem value={brand.id}>{brand.name}</MenuItem>
+                        })}
+                    </TextField>
+                    
+                    <TextField 
+                        name="name" 
+                        label="Product Name"
+                        value={prodObj.name}
+                        onChange={handleControlledInputChange}
+                        // helperText="Enter a product name"
+                        // variant="filled"
+                        fullWidth
+                    />
+                </div>
+               
+                <div>
+                    <TextField 
+                        select
+                        label="Product Group"
+                        name="group_id" 
+                        value={prodObj.group_id}
+                        onChange={handleControlledInputChange}
+                        // helperText="Select a product group"
+                        // variant="filled"
+                        fullWidth
+                    >
+                        <MenuItem value="0">select one</MenuItem>
+
+                        {groups.map(group => {
+                            return <MenuItem value={group.id}>{group.name}</MenuItem>
+                        })}
+                    </TextField>
+                </div>
+
                 <div>                    
+                    <TextField 
+                        select
+                        label="Scent Family"
+                        name="family_id" 
+                        value={prodObj.family_id}
+                        onChange={handleControlledInputChange}
+                        // helperText="Select a scent family"
+                        // variant="filled"
+                        fullWidth
+                    >
+                        <MenuItem value="0">select one</MenuItem>
+                        
+                        {families.map(family => {
+                            return <MenuItem value={family.id}>{family.name}</MenuItem>
+                        })}
+                    </TextField>
+                </div>
+
+                {/* <div>
+                    <TextField 
+                        type="url"
+                        name="image_url" 
+                        label="Image URL"
+                        value={prodObj.image_url}
+                        onChange={handleControlledInputChange}
+                        variant="filled"
+                        fullWidth
+                    />
+                </div> */}
+                
+
+                {editMode 
+                ? (
+                    <div>                    
                     <Button 
-                        className="button--addProduct"
+                        className="button--updateProduct"
                         type="submit"
                         onClick={clickEvent => {
-                            clickEvent.preventDefault()  // Prevents form from being submitted 
+                            clickEvent.preventDefault()  // Prevents form from being submitted
 
-                            const newProduct = {
+                            const revisedProduct = {
+                                id: prodObj.id,
                                 name: prodObj.name,
                                 image_url: prodObj.image_url,
                                 group_id: parseInt(prodObj.group_id),
                                 brand_id: parseInt(prodObj.brand_id),
                                 family_id: parseInt(prodObj.family_id)}
                             
-                            addProduct(newProduct)  // Sends POST request to API
+                            updateProduct(revisedProduct)  // Sends PUT request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
-                    variant="contained"
-                    color="primary"
-                    size="medium"
-                    startIcon={<SaveIcon />}
+                        variant="outlined"
+                        color="primary"
+                        size="medium"
+                        startIcon={<SaveIcon />}
                     >
-                    Save
+                    Update
                     </Button>
                 </div>
-            )
-            }
-                
-        </form>
+                )
+                : (
+                    <div>                    
+                        <Button 
+                            className="button--addProduct"
+                            type="submit"
+                            onClick={clickEvent => {
+                                clickEvent.preventDefault()  // Prevents form from being submitted 
+
+                                const newProduct = {
+                                    name: prodObj.name,
+                                    image_url: prodObj.image_url,
+                                    group_id: parseInt(prodObj.group_id),
+                                    brand_id: parseInt(prodObj.brand_id),
+                                    family_id: parseInt(prodObj.family_id)}
+                                
+                                addProduct(newProduct)  // Sends POST request to API
+                                .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+                            }}
+                        variant="outlined"
+                        color="primary"
+                        size="medium"
+                        startIcon={<SaveIcon />}
+                        >
+                        Save
+                        </Button>
+                    </div>
+                )
+                }
+                    
+            </form>
+        </>
     )
 }

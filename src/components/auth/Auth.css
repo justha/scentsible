@@ -6,3 +6,10 @@
 .form--login > fieldset {
     border: none;
 }
+
+.form--login > fieldset > input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #353535;
+}
