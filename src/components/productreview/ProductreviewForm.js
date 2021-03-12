@@ -4,6 +4,12 @@ import { RatingContext } from "../rating/RatingProvider"
 import "./Productreview.css"
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
+import TextField from '@material-ui/core/TextField'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
 
 
 
@@ -53,8 +59,25 @@ export const ProductreviewForm = (props) => {
             <h2 className="productreviewForm__title">
                 {editMode 
                 ? "Edit Your Product Review" 
-                : "Review This Product"}
+                : "Rate This Product"}
             </h2>
+
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Scent Strength</FormLabel>
+
+                {ratings.map(rating => {
+                    <RadioGroup 
+                        value={prodreviewObj.rating_id}
+                        onChange={handleControlledInputChange}
+                    > 
+                        <FormControlLabel
+                            value={rating.id} 
+                            control={<Radio />}
+                            label={rating.name}
+                        />                            
+                    </RadioGroup>
+                })}
+            </FormControl>
 
             <fieldset>
                 <label>Scent Strength Rating: </label>
@@ -71,13 +94,27 @@ export const ProductreviewForm = (props) => {
             </fieldset>
          
             <fieldset>
+                <TextField type="text" name="review" className="form-control" autoFocus 
+                    label="Product Review"
+                    // placeholder="Comments"
+                    defaultValue={prodreviewObj.review}
+                    onChange={handleControlledInputChange}
+                    fullWidth
+                    multiline
+                    rows={2}
+                    InputLabelProps={{shrink: true,}}
+                    variant="filled"
+                />
+            </fieldset>
+            
+            {/* <fieldset>
                 <label htmlFor="name">Product Review: </label>
                 <br></br>
                 <textarea type="text" name="review" className="form-control" autoFocus 
                     placeholder="Comments"
                     defaultValue={prodreviewObj.review}
                     onChange={handleControlledInputChange}/>
-            </fieldset>
+            </fieldset> */}
             
 
             {editMode 
@@ -100,7 +137,7 @@ export const ProductreviewForm = (props) => {
                         updateProductreview(revisedProductreview)  // Sends PUT request to API
                         .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                     }}
-                    variant="contained"
+                    variant="outlined"
                     color="primary"
                     size="medium"
                     startIcon={<SaveIcon />}
@@ -127,7 +164,7 @@ export const ProductreviewForm = (props) => {
                             addProductreview(newProductreview)  // Sends POST request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                         size="medium"
                         startIcon={<SaveIcon />}
