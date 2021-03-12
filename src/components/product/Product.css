@@ -26,7 +26,10 @@ footer {
     border: none;
 }
 
-
+.form--product > .form-control {
+    margin: 1em;
+    width: 25ch;
+}
 
 /* Products Header */
 .products__header {

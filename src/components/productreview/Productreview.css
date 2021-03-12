@@ -4,9 +4,9 @@
     /* text-align: center; */
 }
 
-.form > .FormControl, 
-.form > .TextField {
-    padding: 50px;
+.form--productreview > .form-control {
+    margin: 1em;
+    width: 50ch;
 }
 
 

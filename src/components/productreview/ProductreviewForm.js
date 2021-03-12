@@ -89,12 +89,16 @@ export const ProductreviewForm = (props) => {
                     onChange={handleControlledInputChange}
                     fullWidth
                     multiline
-                    rows={2}
+                    rows={4}
                     InputLabelProps={{shrink: true,}}
-                    variant="filled"
+                    variant="outlined"
+                    helperText="Share thoughts about your experience to help others"
                 />
 
 
+                <br></br>
+                <br></br>
+                <br></br>
 
                 {editMode 
                 ? (
