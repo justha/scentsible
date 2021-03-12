@@ -87,7 +87,7 @@ export const Register = (props) => {
                         type="submit"
                         size="normal"
                         color="primary"
-                        variant="contained"
+                        variant="outlined"
                     >
                         Create Account
                     </Button>
@@ -95,10 +95,16 @@ export const Register = (props) => {
 
             </form>
 
+          
             <br></br>
 
-            <section className="link--register">
-                <Link to="/login">Login</Link>
+            <section className="container__link--login">
+                <Link 
+                    className="link--login" 
+                    to="/login"
+                >
+                    Login
+                </Link>
             </section>
 
         </main>

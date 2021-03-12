@@ -4,6 +4,12 @@
     /* text-align: center; */
 }
 
+.form > .FormControl, 
+.form > .TextField {
+    padding: 50px;
+}
+
+
 .form--productreview > fieldset {}
 
 .form--radiobuttons {}

@@ -2,13 +2,16 @@
     text-decoration: none;
 }
 
-fieldset {
-    border: none;
-}
-
 .container__top {
 }
 
 .container__bottom {
     margin: 4rem;
+}
+
+.form-control {
+}
+
+fieldset {
+    border: none;
 }

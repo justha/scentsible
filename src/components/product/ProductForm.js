@@ -60,6 +60,7 @@ export const ProductForm = (props) => {
 
                 <div>
                     <TextField 
+                        className="form-control"
                         select
                         label="Brand"
                         name="brand_id" 
@@ -77,6 +78,7 @@ export const ProductForm = (props) => {
                     </TextField>
                     
                     <TextField 
+                        className="form-control" 
                         name="name" 
                         label="Product Name"
                         value={prodObj.name}
@@ -89,6 +91,7 @@ export const ProductForm = (props) => {
                
                 <div>
                     <TextField 
+                        className="form-control" 
                         select
                         label="Product Group"
                         name="group_id" 
@@ -108,6 +111,7 @@ export const ProductForm = (props) => {
 
                 <div>                    
                     <TextField 
+                        className="form-control" 
                         select
                         label="Scent Family"
                         name="family_id" 
@@ -127,6 +131,7 @@ export const ProductForm = (props) => {
 
                 {/* <div>
                     <TextField 
+                        className="form-control"
                         type="url"
                         name="image_url" 
                         label="Image URL"
