@@ -2,15 +2,15 @@
     text-decoration: none;
 }
 
-.container__top {
+
+.container {
+    margin: 0rem;
 }
 
-.container__bottom {
-    margin: 4rem;
-}
+.container__top {}
 
-.form-control {
-}
+.container__bottom {}
+
 
 fieldset {
     border: none;
