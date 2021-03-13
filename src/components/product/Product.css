@@ -26,15 +26,19 @@ footer {
     border: none;
 }
 
-.form--product > .form-control {
+.form--product > .form-control-a {
     margin: 1em;
-    width: 25ch;
+    width: 30ch;
+}
+
+.form--product > .form-control-b {
+    margin: 1em;
+    width: 60ch;
 }
 
 /* Products Header */
 .products__header {
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 

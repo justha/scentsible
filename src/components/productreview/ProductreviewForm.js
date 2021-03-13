@@ -10,7 +10,6 @@ import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import { makeStyles } from '@material-ui/core/styles'
 
 
 export const ProductreviewForm = (props) => {
@@ -72,9 +71,7 @@ export const ProductreviewForm = (props) => {
                                 <FormControlLabel
                                     name="rating_id"
                                     value={rating.id} 
-                                    control={
-                                        <Radio size="small" />
-                                        }
+                                    control={<Radio size="small" />}
                                     label={`${rating.weight}-${rating.name}`}
                                 />)
                         })}
@@ -87,7 +84,6 @@ export const ProductreviewForm = (props) => {
                     // placeholder="Comments"
                     defaultValue={prodreviewObj.review}
                     onChange={handleControlledInputChange}
-                    fullWidth
                     multiline
                     rows={4}
                     InputLabelProps={{shrink: true,}}

@@ -8,6 +8,11 @@ import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
 
 
 
@@ -59,7 +64,7 @@ export const ProductForm = (props) => {
             <form className="form--product">
 
                 <TextField 
-                    className="form-control"
+                    className="form-control-a"
                     select
                     label="Brand"
                     name="brand_id" 
@@ -67,7 +72,6 @@ export const ProductForm = (props) => {
                     onChange={handleControlledInputChange}
                     // helperText="Select a brand"
                     // variant="filled"
-                    fullWidth
                 >
                     <MenuItem value="0">select</MenuItem>
                     
@@ -77,63 +81,58 @@ export const ProductForm = (props) => {
                 </TextField>
                 
                 <TextField 
-                    className="form-control" 
+                    className="form-control-a" 
                     name="name" 
                     label="Product Name"
                     value={prodObj.name}
                     onChange={handleControlledInputChange}
+                    placeholder="input"
                     // helperText="Enter a product name"
                     // variant="filled"
-                    fullWidth
                 />
             
-                <TextField 
-                    className="form-control" 
-                    select
-                    label="Product Group"
-                    name="group_id" 
-                    value={prodObj.group_id}
-                    onChange={handleControlledInputChange}
-                    // helperText="Select a product group"
-                    // variant="filled"
-                    fullWidth
-                >
-                    <MenuItem value="0">select</MenuItem>
+                <FormControl component="fieldset" className="form-control-b">
+                    <FormLabel component="legend">Product Group</FormLabel>
 
-                    {groups.map(group => {
-                        return <MenuItem value={group.id}>{group.name}</MenuItem>
-                    })}
-                </TextField>
-
+                    <RadioGroup value={prodObj.group_id} onChange={handleControlledInputChange} row> 
+                        {groups.map(group => {
+                            return (
+                                <FormControlLabel
+                                name="group_id"
+                                value={group.id} 
+                                control={<Radio size="small" />}
+                                label={group.name}
+                                />)
+                            })}
+                    </RadioGroup>
+                </FormControl>
                 <br></br>
 
-                <TextField 
-                    className="form-control" 
-                    select
-                    label="Scent Family"
-                    name="family_id" 
-                    value={prodObj.family_id}
-                    onChange={handleControlledInputChange}
-                    // helperText="Select a scent family"
-                    // variant="filled"
-                    fullWidth
-                >
-                    <MenuItem value="0">select</MenuItem>
-                    
-                    {families.map(family => {
-                        return <MenuItem value={family.id}>{family.name}</MenuItem>
-                    })}
-                </TextField>
+                <FormControl component="fieldset" className="form-control-b">
+                    <FormLabel component="legend">Scent Family</FormLabel>
+
+                    <RadioGroup value={prodObj.family_id} onChange={handleControlledInputChange} row> 
+                        {families.map(family => {
+                            return (
+                                <FormControlLabel
+                                name="family_id"
+                                value={family.id} 
+                                control={<Radio size="small" />}
+                                label={family.name}
+                                />)
+                            })}
+                    </RadioGroup>
+                </FormControl>
+                <br></br>
 
                 {/* <TextField 
-                    className="form-control"
+                    className="form-control-a"
                     type="url"
                     name="image_url" 
                     label="Image URL"
                     value={prodObj.image_url}
                     onChange={handleControlledInputChange}
                     variant="filled"
-                    fullWidth
                 /> */}
 
                 <br></br>
