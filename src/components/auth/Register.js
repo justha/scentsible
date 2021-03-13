@@ -111,8 +111,8 @@ export const Register = (props) => {
             <br></br>
             <br></br>
             <section className="disclaimer">
-                <p>*This application is for demo purposes only. </p>
-                <p>Please use dummy info to create your test account above. </p>
+                <p>*This application is for demo purposes only.
+                Please use generic data to create your account. </p>
             </section>
 
         </main>
