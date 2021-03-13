@@ -4,6 +4,12 @@
     /* text-align: center; */
 }
 
+.form--productreview > .form-control {
+    margin: 1em;
+    width: 50ch;
+}
+
+
 .form--productreview > fieldset {}
 
 .form--radiobuttons {}

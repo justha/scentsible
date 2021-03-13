@@ -106,6 +106,8 @@ export const Login = (props) => {
               />
           </fieldset>
 
+          <br></br>
+
           <fieldset>
             <div align="center" pad="medium">
               <Button
@@ -116,7 +118,7 @@ export const Login = (props) => {
                 margin="small"
                 pad="small"
                 color="primary"
-                variant="contained"
+                variant="outlined"
               >
                 Log In
               </Button>
@@ -128,8 +130,11 @@ export const Login = (props) => {
       </div>
 
 
-      <div className="link--register">
-        <Link
+      <br></br>
+
+      <div className="container__link--register">
+        <Link 
+          className="link--register" 
           as={Link}
           to="/register"
           title="register"
@@ -137,7 +142,7 @@ export const Login = (props) => {
           margin="small"
           justify="center"
         >
-          Register
+          Create a new account
         </Link>
       </div>
       

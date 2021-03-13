@@ -10,7 +10,7 @@ export const ProductHeader = () => {
 
     return (
         <header className="products__header"> 
-            <h2 className="title">Products</h2> 
+            <h1 className="title">Personal Care Products</h1> 
 
             <Button 
                 className="button--addProduct" 

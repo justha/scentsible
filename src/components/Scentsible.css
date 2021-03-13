@@ -2,13 +2,16 @@
     text-decoration: none;
 }
 
+
+.container {
+    margin: 0rem;
+}
+
+.container__top {}
+
+.container__bottom {}
+
+
 fieldset {
     border: none;
-}
-
-.container__top {
-}
-
-.container__bottom {
-    margin: 4rem;
 }

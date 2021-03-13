@@ -4,13 +4,12 @@ import { RatingContext } from "../rating/RatingProvider"
 import "./Productreview.css"
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
-import TextField from '@material-ui/core/TextField'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
-
+import TextField from '@material-ui/core/TextField'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
 
 
 export const ProductreviewForm = (props) => {
@@ -55,91 +54,66 @@ export const ProductreviewForm = (props) => {
     }
 
     return (
-        <form className="form--productreview">
+        <>
             <h2 className="productreviewForm__title">
                 {editMode 
                 ? "Edit Your Product Review" 
                 : "Rate This Product"}
             </h2>
 
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Scent Strength</FormLabel>
+            <form className="form--productreview">
+                <FormControl component="fieldset" className="form-control">
+                    <FormLabel component="legend">Scent Strength</FormLabel>
 
-                <RadioGroup value={prodreviewObj.rating_id} onChange={handleControlledInputChange}> 
-                    {ratings.map(rating => {
-                        return (
-                            <FormControlLabel
-                                name="rating_id"
-                                value={rating.id} 
-                                control={
-                                    <Radio size="small" />
-                                    }
-                                label={`${rating.weight}-${rating.name}`}
-                            />)
-                    })}
-                </RadioGroup>
-            </FormControl>
-
-
-            <TextField type="text" name="review" className="form-control" autoFocus 
-                label="Product Review"
-                // placeholder="Comments"
-                defaultValue={prodreviewObj.review}
-                onChange={handleControlledInputChange}
-                fullWidth
-                multiline
-                rows={2}
-                InputLabelProps={{shrink: true,}}
-                variant="filled"
-            />
+                    <RadioGroup value={prodreviewObj.rating_id} onChange={handleControlledInputChange}> 
+                        {ratings.map(rating => {
+                            return (
+                                <FormControlLabel
+                                    name="rating_id"
+                                    value={rating.id} 
+                                    control={<Radio size="small" />}
+                                    label={`${rating.weight}-${rating.name}`}
+                                />)
+                        })}
+                    </RadioGroup>
+                </FormControl>
 
 
-
-            {editMode 
-            ? (
-                <div>                    
-                <Button 
-                    className="button--updateProductreview"
-                    type="submit"
-                    onClick={clickEvent => {
-                        clickEvent.preventDefault()  // Prevents form from being submitted
-
-                        const revisedProductreview = {
-                            id: prodreviewObj.id,
-                            review_date: prodreviewObj.review_date,
-                            review: prodreviewObj.review,
-                            rating_id: parseInt(prodreviewObj.rating_id),
-                            product_id: parseInt(prodreviewObj.product_id)
-                        }
-                        
-                        updateProductreview(revisedProductreview)  // Sends PUT request to API
-                        .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
-                    }}
+                <TextField type="text" name="review" className="form-control" autoFocus 
+                    label="Product Review"
+                    // placeholder="Comments"
+                    defaultValue={prodreviewObj.review}
+                    onChange={handleControlledInputChange}
+                    multiline
+                    rows={4}
+                    InputLabelProps={{shrink: true,}}
                     variant="outlined"
-                    color="primary"
-                    size="medium"
-                    startIcon={<SaveIcon />}
-                >
-                Update
-                </Button>
-            </div>
-            )
-            : (
-                <div>                    
+                    helperText="Share thoughts about your experience to help others"
+                />
+
+
+                <br></br>
+                <br></br>
+                <br></br>
+
+                {editMode 
+                ? (
+                    <div>                    
                     <Button 
-                        className="button--addProductreview"
+                        className="button--updateProductreview"
                         type="submit"
                         onClick={clickEvent => {
-                            clickEvent.preventDefault()  // Prevents form from being submitted 
+                            clickEvent.preventDefault()  // Prevents form from being submitted
 
-                            const newProductreview = {
-                                review_date: jsonDate,
+                            const revisedProductreview = {
+                                id: prodreviewObj.id,
+                                review_date: prodreviewObj.review_date,
                                 review: prodreviewObj.review,
                                 rating_id: parseInt(prodreviewObj.rating_id),
-                                product_id: productId
+                                product_id: parseInt(prodreviewObj.product_id)
                             }
-                                                       
-                            addProductreview(newProductreview)  // Sends POST request to API
+                            
+                            updateProductreview(revisedProductreview)  // Sends PUT request to API
                             .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
                         }}
                         variant="outlined"
@@ -147,12 +121,40 @@ export const ProductreviewForm = (props) => {
                         size="medium"
                         startIcon={<SaveIcon />}
                     >
-                    Save
+                    Update
                     </Button>
                 </div>
-            )
-            }
-                
-        </form>
+                )
+                : (
+                    <div>                    
+                        <Button 
+                            className="button--addProductreview"
+                            type="submit"
+                            onClick={clickEvent => {
+                                clickEvent.preventDefault()  // Prevents form from being submitted 
+
+                                const newProductreview = {
+                                    review_date: jsonDate,
+                                    review: prodreviewObj.review,
+                                    rating_id: parseInt(prodreviewObj.rating_id),
+                                    product_id: productId
+                                }
+                                                        
+                                addProductreview(newProductreview)  // Sends POST request to API
+                                .then(() => {props.history.push(`/products`)})  // Sends user back to ProductList
+                            }}
+                            variant="outlined"
+                            color="primary"
+                            size="medium"
+                            startIcon={<SaveIcon />}
+                        >
+                        Save
+                        </Button>
+                    </div>
+                )
+                }
+                    
+            </form>
+        </>
     )
 }

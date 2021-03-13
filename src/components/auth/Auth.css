@@ -1,5 +1,6 @@
 .form--login, 
-.link--register {
+.container__link--register,
+.container__link--login {
     text-align: center;
 }
 
@@ -12,4 +13,23 @@
     border-right: none;
     border-left: none;
     border-bottom: 1px solid #353535;
+}
+
+.link--register, 
+.link--register:visited, 
+.link--register:hover, 
+.link--register:focus,
+.link--login, 
+.link--login:visited, 
+.link--login:hover, 
+.link--login:focus {
+    text-decoration: none;
+    color: #3f50b5;
+}
+
+.disclaimer {
+    color: #353535;
+    font-size: small;
+    color: #f44336;
+    font-weight: bold;
 }
