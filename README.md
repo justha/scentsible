@@ -39,7 +39,7 @@ Rate any product by fragrance strength. Search by product type, scent family, an
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png?raw=true" alt="Login screen"/></kbd>
 
 **Homepage** <br/>
-<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843220/scentsible/screenshots/homepage_uvutl9.png?raw=true" alt="Homepage screen"/></kbd>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615845482/scentsible/screenshots/homepage_an1qbw.png?raw=true" alt="Homepage screen"/></kbd>
 <br/>
 
 **View All Products** 
