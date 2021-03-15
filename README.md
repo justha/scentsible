@@ -36,5 +36,4 @@ Rate any product by fragrance strength. Search by product type, scent family, an
 
 ## Screenshots
 **Login** <br/>
-<img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png?raw=true" alt="Login screen"/>
-
+<img style="border: 1px solid grey;" src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png?raw=true" alt="Login screen"/>
