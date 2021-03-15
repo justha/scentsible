@@ -42,18 +42,18 @@ Rate any product by fragrance strength. Search by product type, scent family, an
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843220/scentsible/screenshots/homepage_uvutl9.png?raw=true" alt="Homepage screen"/></kbd>
 <br/>
 
-**View Products** 
+**View All Personal Care Products** 
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843567/scentsible/screenshots/list_bfrwu1.png?raw=true" alt="List of all products"/></kbd>
 <br/>
 
-**Filters** <br/>
+**Filter by Scent Family and Product Type** <br/>
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843570/scentsible/screenshots/filters_uahwpv.png?raw=true" alt="List of filtered products"/></kbd>
 <br/>
 
-**Products** <br/>
+**Add New Products** <br/>
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843592/scentsible/screenshots/products_zdvfdr.png?raw=true" alt="new product form"/></kbd>
 <br/>
 
-**Ratings** <br/>
+**Add Product Fragrance Strength Ratings** <br/>
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843595/scentsible/screenshots/ratings_r4dzqz.png?raw=true" alt="ratings form"/></kbd>
 <br/>
