@@ -36,4 +36,24 @@ Rate any product by fragrance strength. Search by product type, scent family, an
 
 ## Screenshots
 **Login** <br/>
-<kbd><img style="border: 1px solid grey;" src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png?raw=true" alt="Login screen"/></kbd>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png?raw=true" alt="Login screen"/></kbd>
+
+**Homepage** <br/>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843220/scentsible/screenshots/homepage_uvutl9.png?raw=true" alt="Homepage screen"/></kbd>
+<br/>
+
+**View Products** 
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843567/scentsible/screenshots/list_bfrwu1.png?raw=true" alt="List of all products"/></kbd>
+<br/>
+
+**Filters** <br/>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843570/scentsible/screenshots/filters_uahwpv.png?raw=true" alt="List of filtered products"/></kbd>
+<br/>
+
+**Products** <br/>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843592/scentsible/screenshots/products_zdvfdr.png?raw=true" alt="new product form"/></kbd>
+<br/>
+
+**Ratings** <br/>
+<kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843595/scentsible/screenshots/ratings_r4dzqz.png?raw=true" alt="ratings form"/></kbd>
+<br/>
