@@ -50,10 +50,10 @@ Rate any product by fragrance strength. Search by product type, scent family, an
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843570/scentsible/screenshots/filters_uahwpv.png?raw=true" alt="List of filtered products"/></kbd>
 <br/>
 
-**Add New Products** <br/>
+**Add and Edit Products to Rate & Review** <br/>
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843592/scentsible/screenshots/products_zdvfdr.png?raw=true" alt="new product form"/></kbd>
 <br/>
 
-**Add Fragrance Strength Ratings** <br/>
+**Add and Edit Fragrance Strength Ratings & Reviews ** <br/>
 <kbd><img src="https://res.cloudinary.com/djxxamywv/image/upload/v1615843595/scentsible/screenshots/ratings_r4dzqz.png?raw=true" alt="ratings form"/></kbd>
 <br/>
