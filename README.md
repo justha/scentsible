@@ -33,3 +33,36 @@ View all products and fragrance-focused ratings contributed by the scentsitive c
 
 **Ratings** <br/>
 Rate any product by fragrance strength. Search by product type, scent family, and more. <br/>
+
+## Screenshots
+**Login** <br/>
+![Login] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843217/scentsible/screenshots/login_rse1vf.png)
+<br/>
+
+**Homepage** <br/>
+![Homepage] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843220/scentsible/screenshots/homepage_uvutl9.png)
+<br/>
+
+**View Products** 
+![List] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843567/scentsible/screenshots/list_bfrwu1.png)
+<br/>
+
+**Filters** <br/>
+![Filters] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843570/scentsible/screenshots/filters_uahwpv.png)
+
+<br/>
+
+**Products** <br/>
+![Products] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843592/scentsible/screenshots/products_zdvfdr.png)
+<br/>
+
+**Ratings** <br/>
+![Ratings] 
+(https://res.cloudinary.com/djxxamywv/image/upload/v1615843595/scentsible/screenshots/ratings_r4dzqz.png)
+<br/>
+
